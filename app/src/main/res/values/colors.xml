@@ -4,10 +4,14 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="font_results">#ffffff</color>
-    <color name="bg_show_ays">#000000</color>
+    <color name="bg_show_ays">#ACA9A9</color>
     <color name="ayas_color">#ffffff</color>
     <color name="dialoge_bg">#000000</color>
     <color name="bg_play_audio">#000000</color>
     <color name="bg_listening">#000000</color>
     <color name="spin_color">#ffffff</color>
+    <color name="red">#ff0000</color>
+    <color name="wrong_color">#FFEB3B</color>
+    <color name="correct">#00ff00</color>
+    <color name="missed">#ff0000</color>
 </resources>

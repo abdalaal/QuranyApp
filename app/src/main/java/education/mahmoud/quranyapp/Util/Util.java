@@ -1,5 +1,6 @@
 package education.mahmoud.quranyapp.Util;
 
+import android.arch.persistence.room.util.StringUtil;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -20,6 +21,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -98,7 +101,6 @@ public class Util {
 
     }
 
-
     public static String getDirectoryPath() {
         File f = new File(Environment.getExternalStoragePublicDirectory
                 (Environment.DIRECTORY_DOCUMENTS), "quran");
@@ -136,6 +138,37 @@ public class Util {
     }
 
 
+    public  static Spannable getDiffSpannaled(String original, String toCompStr){
+        TestText testText = new TestText();
+        testText.gitDiff(original, toCompStr);
+        String res = testText.getResString();
+        return getSpannable(res ,testText.getCorrectPoints() ,testText.getInsertionPoints(),testText.getDeletionPoints());
+
+    }
+
+    public static Spannable getSpannable(String text ,List<Point> correctPoints , List<Point> insertPoints  , List<Point> delePoint) {
+        Spannable spannable = new SpannableString(text);
+
+        for(Point point : insertPoints){
+            spannable.setSpan(new ForegroundColorSpan(Color.YELLOW), point.getStart()
+                    , point.getEnd(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        for(Point point : delePoint){
+            spannable.setSpan(new ForegroundColorSpan(Color.RED), point.getStart()
+                    , point.getEnd(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        for(Point point : correctPoints){
+            spannable.setSpan(new ForegroundColorSpan(Color.GREEN), point.getStart()
+                    , point.getEnd(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+
+
+        return spannable;
+
+    }
 
 
 }

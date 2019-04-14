@@ -27,5 +27,12 @@
         android:title="@string/open_listening"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/actionTestText"
+        android:title="@string/test_text"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+    s
+
 
 </menu>

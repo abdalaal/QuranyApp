@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -15,24 +14,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:windowSoftInputMode="adjustPan|adjustResize"
-            android:name=".feature.listening_activity.ListeningActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
 
-        </activity>
+        <activity
+            android:name=".feature.test_quran.TestSaveQuran"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity
+            android:name=".feature.listening_activity.ListeningActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".feature.ayahs_search.ShowSearchResults"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-
         <activity
             android:name=".feature.show_sura_ayas.ShowSuarhAyas"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".feature.show_sura_list.ShowSuar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

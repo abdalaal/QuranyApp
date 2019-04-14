@@ -426,6 +426,7 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
         ayahsToDownLoad = new ArrayList<>();
         ayahsToListen = new ArrayList<>();
 
+        //region check inputs
         if (startSura != null && endSura != null) {
             try {
                 int start = Integer.parseInt(edStartSuraAyah.getText().toString());
@@ -483,12 +484,14 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
         } else {
             showMessage(getString(R.string.sura_select_error));
         }
+        //endregion
     }
 
     private void closeKeyboard() {
-        Util.hideInputKeyboard(this);
         edEndSuraAyah.clearFocus();
         edStartSuraAyah.clearFocus();
+        lnPlayView.requestFocus();
+        Util.hideInputKeyboard(this);
     }
 
     private void makeRangeError() {
