@@ -3,7 +3,7 @@
     <string name="title_activity_sura_details">SuraDetails</string>
     <string name="action_settings">Settings</string>
     <string name="enter_surah_num">Enter Surah Num</string>
-    <string name="go">Go By Num</string>
+    <string name="go">Go</string>
     <string name="go_by_name">Go By Name</string>
     <string name="saved">^_^ Saved ^_^</string>
     <string name="jump">Jump</string>
@@ -90,5 +90,11 @@
 
 
     <string name="test_text">Test Text</string>
+    <string name="setting">Setting</string>
+    <string name="color_for_background_for_regular_mode">Color for background for regular mode</string>
+    <string name="green">Green</string>
+    <string name="yellow">Yellow</string>
+    <string name="white">White</string>
+    <string name="night_mode">Night Mode</string>
 
 </resources>

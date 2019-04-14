@@ -35,6 +35,11 @@ Search is fundamental feature of any Qurany App so I wrote Query to search in Ay
 - **Listening**
 Download audio have two ways first download whole sura or download seperate ayahs, i have used seperate ayahs to enable feature of listen to specific ayahs. I download audio in storage then store path into database to be used by medialPlayer.
 
+## Mistakes & Learn 
+
+- I have a crash app on real device but app work correctly on emulator so I used a **crashReporter library** and it generates a report after check I found problem was with *primaryColor* that it has a *aplha value* so I removed alpha and app work correctly
+
+
 ## Technologies
 Qurany is built using:
 
@@ -52,25 +57,31 @@ Room| 1.1.1
 prdownloader | 0.4.0
 easypermissions|1.1.1
 stetho | 1.5.1
+crashreporter | 1.0.9
+
+# statistics
+
+Languages | Line of code (LOC)
+---------- | -------
+Java | 4991
+XML | 1389
 
 
 
 # Screens
 
+![img1](images/1.png)
+![img1](images/2.png)
+![img1](images/3.png)
+![img1](images/4.png)
+![img1](images/5.png)
+![img1](images/6.png)
+![img1](images/7.png)
+![img1](images/8.png)
+![img1](images/9.png)
+![img1](images/10.png)
+![img1](images/11.png)
 
-![img1](https://github.com/MahmoudMabrok/QuranyApp/blob/master/1.png)
-
-![img1](https://github.com/MahmoudMabrok/QuranyApp/blob/master/2.png)
-
-![img1](https://github.com/MahmoudMabrok/QuranyApp/blob/master/3.png)
-
-![img1](https://github.com/MahmoudMabrok/QuranyApp/blob/master/4.png)
-
-![img1](https://github.com/MahmoudMabrok/QuranyApp/blob/master/5.png)
-
-![img1](https://github.com/MahmoudMabrok/QuranyApp/blob/master/6.png)
-
-![img1](7.png)
 
 
 # Contributors 

@@ -1,14 +1,12 @@
 package education.mahmoud.quranyapp.feature.test_quran;
 
 import android.support.annotation.NonNull;
-import android.support.design.button.MaterialButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,8 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import education.mahmoud.quranyapp.R;
-import education.mahmoud.quranyapp.data_layer.local.AyahItem;
-import education.mahmoud.quranyapp.model.Aya;
+import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
 
 public class SaveTestAdapter extends RecyclerView.Adapter<SaveTestAdapter.Holder> {
 

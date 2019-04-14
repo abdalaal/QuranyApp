@@ -4,8 +4,8 @@
     <string name="title_activity_sura_details">SuraDetails</string>
     <string name="action_settings">اذهب الى السورة..</string>
     <string name="enter_surah_num">ادخل رقم السورة</string>
-    <string name="go">اذهب الى السورة برقمها</string>
-    <string name="go_by_name">اذهب الى السورة بالاسم</string>
+    <string name="go">اذهب</string>
+    <string name="go_by_name">اذهب</string>
     <string name="saved">^_^ تم الحفظ ^_^</string>
 
     <string name="jump">انتقال سريع</string>
@@ -30,6 +30,12 @@
     <string name="sura_select_error">اختر سورة من القائمة</string>
     <string name="downloading">سيتم تحميل الملفات …</string>
     <string name="test_text">اختبر نفسك </string>
+    <string name="setting">الاعدادات</string>
+    <string name="color_for_background_for_regular_mode">لون الخلفية للايات فى الوضع العادي</string>
+    <string name="green">اخضر</string>
+    <string name="yellow">اصفر</string>
+    <string name="white">ابيض</string>
+    <string name="night_mode">تفعيل وضع القراءة الليلي</string>
 
 
 </resources>

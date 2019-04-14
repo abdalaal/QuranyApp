@@ -3,4 +3,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="describeColors">@dimen/_12ssp</dimen>
+    <dimen name="setting_text_size">@dimen/_22ssp</dimen>
 </resources>

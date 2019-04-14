@@ -38,4 +38,23 @@ public class LocalShared {
         preferences.edit().putBoolean(Constants.PERMISSION_STATE, state).apply();
     }
 
+    public boolean getNightModeState() {
+        return preferences.getBoolean(Constants.NightMode_STATE, false);
+    }
+
+    public void setNightModeState(boolean state) {
+        preferences.edit().putBoolean(Constants.NightMode_STATE, state).apply();
+    }
+
+    public int getBackColorState() {
+        return preferences.getInt(Constants.BackColor_STATE, 0);
+    }
+
+    public void setBackColorState(int color) {
+        preferences.edit().putInt(Constants.BackColor_STATE, color).apply();
+    }
+
+
+
+
 }

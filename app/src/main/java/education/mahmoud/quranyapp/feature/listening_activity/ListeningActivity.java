@@ -36,8 +36,8 @@ import butterknife.OnClick;
 import education.mahmoud.quranyapp.R;
 import education.mahmoud.quranyapp.Util.Util;
 import education.mahmoud.quranyapp.data_layer.Repository;
-import education.mahmoud.quranyapp.data_layer.local.AyahItem;
-import education.mahmoud.quranyapp.data_layer.local.SuraItem;
+import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
+import education.mahmoud.quranyapp.data_layer.local.room.SuraItem;
 import pub.devrel.easypermissions.EasyPermissions;
 import pub.devrel.easypermissions.PermissionRequest;
 

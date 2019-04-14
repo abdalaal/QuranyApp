@@ -4,6 +4,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ import education.mahmoud.quranyapp.Util.Constants;
 import education.mahmoud.quranyapp.Util.Data;
 import education.mahmoud.quranyapp.Util.Util;
 import education.mahmoud.quranyapp.data_layer.Repository;
-import education.mahmoud.quranyapp.data_layer.local.AyahItem;
+import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
 
 public class ShowSuarhAyas extends AppCompatActivity {
 
@@ -26,6 +27,8 @@ public class ShowSuarhAyas extends AppCompatActivity {
     TextView tvSuraNameShowAyas;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
+    @BindView(R.id.lnShowAyahs)
+    LinearLayout lnShowAyahs;
 
     private Repository repository;
     int index;
@@ -38,6 +41,7 @@ public class ShowSuarhAyas extends AppCompatActivity {
         setContentView(R.layout.activity_show_suarh_ayas);
         ButterKnife.bind(this);
 
+
         repository = Repository.getInstance(getApplication());
         // get index from intent
         index = getIntent().getIntExtra(Constants.SURAH_INDEX, 0);
@@ -49,10 +53,8 @@ public class ShowSuarhAyas extends AppCompatActivity {
         // check if get from last read option
         scroll = getIntent().getIntExtra(Constants.LAST_INDEX_Scroll, 0);
 
-
         Typeface typeface = Typeface.createFromAsset(getAssets(), "kfgqpc_naskh.ttf");
         tvAyahs.setTypeface(typeface);
-
     }
 
     @Override
@@ -65,7 +67,38 @@ public class ShowSuarhAyas extends AppCompatActivity {
             }
         });
 
-        int scroll1 = Repository.getInstance(getApplication()).getLastSuraWithScroll();
+        /*
+        *
+        * ResourcesCompat.getColor(getResources(), R.color.your_color, null); //without themes
+         */
+        // check Night Mode
+        if (repository.getNightModeState()) {
+            tvSuraNameShowAyas.setTextColor(getResources().getColor(R.color.ayas_color_night_mode));
+            tvAyahs.setTextColor(getResources().getColor(R.color.ayas_color_night_mode));
+            lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_ays_night_mode));
+        } else {
+            tvSuraNameShowAyas.setTextColor(getResources().getColor(R.color.ayas_color));
+            tvAyahs.setTextColor(getResources().getColor(R.color.ayas_color));
+
+            // check user color for background
+            int col = repository.getBackColorState();
+            switch (col){
+                case Constants.GREEN:
+                    lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_green));
+                    break;
+                case Constants.WHITE:
+                    lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_white));
+                    break;
+
+                 case Constants.YELLOW:
+                     lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_yellow));
+                     break;
+            }
+
+
+
+
+        }
     }
 
     private void loadSurahFromDb2UI(int index) {

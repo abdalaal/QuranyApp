@@ -1,6 +1,5 @@
 package education.mahmoud.quranyapp.feature.test_quran;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -25,8 +24,8 @@ import butterknife.OnClick;
 import education.mahmoud.quranyapp.R;
 import education.mahmoud.quranyapp.Util.Util;
 import education.mahmoud.quranyapp.data_layer.Repository;
-import education.mahmoud.quranyapp.data_layer.local.AyahItem;
-import education.mahmoud.quranyapp.data_layer.local.SuraItem;
+import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
+import education.mahmoud.quranyapp.data_layer.local.room.SuraItem;
 
 public class TestSaveQuran extends AppCompatActivity  implements SaveTestAdapter.IOnTestClick {
 

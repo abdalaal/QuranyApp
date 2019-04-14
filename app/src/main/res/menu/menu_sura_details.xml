@@ -4,7 +4,7 @@
     tools:context="education.mahmoud.quranyapp.feature.SuraDetails">
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/actionJump"
         android:orderInCategory="100"
         android:title="@string/jump"
         app:showAsAction="never" />
@@ -32,7 +32,14 @@
         android:title="@string/test_text"
         android:orderInCategory="100"
         app:showAsAction="never"/>
-    s
+
+    <item
+        android:id="@+id/actionSetting"
+        android:title="@string/setting"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+
 
 
 </menu>

@@ -34,6 +34,9 @@ public class GoToSurah extends DialogFragment {
     EditText edSurahNum;
     @BindView(R.id.btnGoToSura)
     Button btnGoToSura;
+
+    @BindView(R.id.btnGo)
+    Button btnGo;
     @BindView(R.id.edSurahName)
     EditText edSurahName;
     @BindView(R.id.btnGoToSuraByName)
@@ -69,8 +72,26 @@ public class GoToSurah extends DialogFragment {
         goToSura(index);
     }
 
-    @OnClick(R.id.btnGoToSuraByName)
-    public void onViewBtnname() {
+    @OnClick(R.id.btnGo)
+    public void onGoClicked() {
+        if (edSurahName.getText().toString().length() > 0){
+            goByName();
+        }else{
+            goByNum();
+        }
+
+    }
+    public void goByNum(){
+        int index = Integer.parseInt(edSurahNum.getText().toString());
+        index--;
+        if (index < 0 || index >= 114) {
+            edSurahNum.setError("Number must be 1-114");
+            return;
+        }
+        goToSura(index);
+    }
+
+    public void goByName(){
         String name = edSurahName.getText().toString();
         List<String> suraList = new ArrayList<>(Arrays.asList(Data.SURA_NAMES));
         int index = suraList.indexOf(name);
@@ -80,6 +101,12 @@ public class GoToSurah extends DialogFragment {
             return;
         }
         goToSura(index);
+    }
+
+
+    @OnClick(R.id.btnGoToSuraByName)
+    public void onViewBtnname() {
+
     }
 
     private void goToSura(int index) {

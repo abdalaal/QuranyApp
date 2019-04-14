@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import education.mahmoud.quranyapp.R;
 import education.mahmoud.quranyapp.Util.Data;
 import education.mahmoud.quranyapp.Util.Util;
-import education.mahmoud.quranyapp.data_layer.local.AyahItem;
+import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
 
 public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Holder> {
 

@@ -4,10 +4,10 @@ import android.app.Application;
 
 import java.util.List;
 
-import education.mahmoud.quranyapp.data_layer.local.AyahItem;
+import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
 import education.mahmoud.quranyapp.data_layer.local.LocalShared;
-import education.mahmoud.quranyapp.data_layer.local.QuranDB;
-import education.mahmoud.quranyapp.data_layer.local.SuraItem;
+import education.mahmoud.quranyapp.data_layer.local.room.QuranDB;
+import education.mahmoud.quranyapp.data_layer.local.room.SuraItem;
 
 public class Repository {
 
@@ -28,6 +28,7 @@ public class Repository {
     }
 
 
+    // shared
     public void addLastSura(int index) {
         localShared.addLastSura(index);
     }
@@ -48,6 +49,24 @@ public class Repository {
     public void setPermissionState(boolean state) {
         localShared.setPermissionState(state);
     }
+
+    public boolean getNightModeState() {
+        return localShared.getNightModeState();
+    }
+
+    public void setNightModeState(boolean state) {
+        localShared.setNightModeState(state);
+    }
+
+    public int getBackColorState() {
+        return localShared.getBackColorState();
+    }
+
+    public void setBackColorState(int color) {
+        localShared.setBackColorState(color);
+    }
+
+
 
     // suarh db operation
     public void addSurah(SuraItem suraItem) {

@@ -23,10 +23,11 @@ import education.mahmoud.quranyapp.Util.Constants;
 import education.mahmoud.quranyapp.Util.Data;
 import education.mahmoud.quranyapp.Util.Util;
 import education.mahmoud.quranyapp.data_layer.Repository;
-import education.mahmoud.quranyapp.data_layer.local.AyahItem;
-import education.mahmoud.quranyapp.data_layer.local.SuraItem;
+import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
+import education.mahmoud.quranyapp.data_layer.local.room.SuraItem;
 import education.mahmoud.quranyapp.feature.ayahs_search.ShowSearchResults;
 import education.mahmoud.quranyapp.feature.listening_activity.ListeningActivity;
+import education.mahmoud.quranyapp.feature.setting.SettingActivity;
 import education.mahmoud.quranyapp.feature.show_sura_ayas.ShowSuarhAyas;
 import education.mahmoud.quranyapp.feature.test_quran.TestSaveQuran;
 import education.mahmoud.quranyapp.model.Aya;
@@ -117,7 +118,7 @@ public class ShowSuar extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.actionJump:
                 openGoToSura();
                 break;
             case R.id.actionGoToLastRead:
@@ -133,6 +134,9 @@ public class ShowSuar extends AppCompatActivity {
 
             case R.id.actionTestText:
                 openTestText();
+                break;
+            case R.id.actionSetting:
+                openSetting();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -175,5 +179,12 @@ public class ShowSuar extends AppCompatActivity {
         Intent openAcivity = new Intent(ShowSuar.this, TestSaveQuran.class);
         startActivity(openAcivity);
     }
+
+
+    private void openSetting() {
+        Intent openAcivity = new Intent(ShowSuar.this, SettingActivity.class);
+        startActivity(openAcivity);
+    }
+
 
 }
