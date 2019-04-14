@@ -71,3 +71,8 @@ stetho | 1.5.1
 ![img1](https://github.com/MahmoudMabrok/QuranyApp/blob/master/6.png)
 
 ![img1](7.png)
+
+
+# Contributors 
+
+Thanks to [zularizal](https://github.com/zularizal) for awesome logo
