@@ -34,9 +34,6 @@ public class SuraListFragment extends Fragment {
     Repository repository ;
 
 
-    public String getTilte(){
-        return  getString(R.string.read);
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

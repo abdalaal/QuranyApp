@@ -32,6 +32,24 @@ public abstract class QuranDB extends RoomDatabase {
 
         }
     };
+    static final Migration MIGRATION_1_3 =  new Migration(1,3) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE ayahs "
+                    + " ADD COLUMN pageNum INTEGER not null default 1 ");
+
+            database.execSQL("ALTER TABLE ayahs "
+                    + " ADD COLUMN juz INTEGER not null default 1 ");
+
+            database.execSQL("ALTER TABLE ayahs "
+                    + " ADD COLUMN tafseer TEXT");
+
+            database.execSQL("CREATE table bookmark (" +
+                    "id INTEGER PRIMARY KEY NOT NULL , scrollIndex INTEGER NOT NULL default 0 ,timemills  " +
+                    "INTEGER NOT NULL default 0 , suraName TEXT default null , pageNum INTEGER NOT NULL  default 0 )");
+
+        }
+    };
 
 
 
@@ -39,7 +57,7 @@ public abstract class QuranDB extends RoomDatabase {
         if (instance == null) { // first time to create instance
             instance = Room.databaseBuilder(application, QuranDB.class, "quran")
                     .allowMainThreadQueries()
-                    .addMigrations(MIGRATION_2_3)
+                    .addMigrations(MIGRATION_2_3 , MIGRATION_1_3)
                     .build();
         }
         return instance;

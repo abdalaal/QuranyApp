@@ -16,9 +16,15 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".feature.home_Activity.Home"
-            android:label="@string/title_activity_home"
             android:exported="true"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".feature.setting.SettingActivity" />
@@ -38,12 +44,7 @@
             android:name=".feature.show_sura_ayas.ShowSuarhAyas"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".feature.show_sura_list.ShowSuar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data

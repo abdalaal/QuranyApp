@@ -17,7 +17,7 @@ import education.mahmoud.quranyapp.data_layer.local.room.BookmarkItem;
 
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Holder> {
 
-
+    private IOBookmark ioBookmark ;
 
     private List<BookmarkItem> list;
 
@@ -31,6 +31,9 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Holder
         notifyItemRangeChanged(list.size() - 1, list.size());
     }
 
+    public void setIoBookmark(IOBookmark ioBookmark) {
+        this.ioBookmark = ioBookmark;
+    }
 
     public void setBookmarkItemList(List<BookmarkItem> newList) {
         list = new ArrayList<>(newList);
@@ -51,7 +54,13 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Holder
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int i) {
-        BookmarkItem item = list.get(i);
+        final BookmarkItem item = list.get(i);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ioBookmark.onBookmarkClick(item);
+            }
+        });
         holder.tvIndexBookmark.setText(""+item.getScrollIndex());
         holder.tvSuraNameBookmark.setText(item.getSuraName());
     }
@@ -73,4 +82,8 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Holder
         }
     }
 
+
+    interface  IOBookmark {
+        void onBookmarkClick(BookmarkItem item);
+    }
 }

@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.List;
@@ -66,7 +67,7 @@ public class ShowSuarhAyas extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        showMessage(" intented scroll " + scroll);
+      //  showMessage(" intented scroll " + scroll);
         scrollView.post(new Runnable() {
             public void run() {
                 scrollView.smoothScrollTo(0, scroll);
@@ -124,12 +125,10 @@ public class ShowSuarhAyas extends AppCompatActivity {
         Repository.getInstance(getApplication()).addLastSura(index);
         int lastScroll = scrollView.getScrollY();
         Repository.getInstance(getApplication()).addLastSuraWithScroll(lastScroll);
-        showMessage("last stop scroll " + lastScroll);
-    }
+     }
 
     private void showMessage(String message) {
-        //  Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        Log.d(TAG, message);
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.imBookmark)
@@ -145,5 +144,7 @@ public class ShowSuarhAyas extends AppCompatActivity {
         bookmarkItem.setTimemills(miilis);
 
         repository.addBookmark(bookmarkItem);
+
+        showMessage(getString(R.string.saved));
     }
 }

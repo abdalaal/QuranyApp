@@ -27,7 +27,8 @@
     <color name="bg_green" >#A88BC34A</color>
     <color name="bg_white" >#ffffff</color>
     <color name="bg_yellow" >#FCF4B1</color>
-    <color name="bg_descript">#86867F</color>
+    <color name="bg_descript">#ECF1B2</color>
+    <color name="descrip_text">#000000</color>
 
 
 </resources>

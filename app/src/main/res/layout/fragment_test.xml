@@ -67,7 +67,7 @@
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:background="@drawable/back_search_res"
                 android:text="@string/btn_start"
-                android:textColor="@color/ayas_color" />
+                android:textColor="@color/bg_white" />
 
             <Button
                 android:id="@+id/btnTestSaveRandom"
@@ -76,7 +76,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/back_search_res"
                 android:text="@string/btn_start_random"
-                android:textColor="@color/ayas_color" />
+                android:textColor="@color/bg_white"/>
 
 
         </LinearLayout>
@@ -94,27 +94,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/bg_descript">
+            android:paddingStart="@dimen/_13sdp"
+            android:paddingEnd="@dimen/_13sdp"
+            android:background="@drawable/back_desc">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Red color represent missing text"
-                android:textColor="@color/missed"
+                android:textColor="@color/descrip_text"
                 android:textSize="@dimen/describeColors" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Yellow color represent additional (wrong) text"
-                android:textColor="@color/wrong_color"
+                android:textColor="@color/descrip_text"
                 android:textSize="@dimen/describeColors" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Green color represent correct text"
-                android:textColor="@color/correct"
+                android:textColor="@color/descrip_text"
                 android:textSize="@dimen/describeColors" />
 
         </LinearLayout>

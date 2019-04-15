@@ -19,7 +19,7 @@
     <string name="time_progress"> %d / %d</string>
     <string name="start_ayah">ايه البداية </string>
     <string name="end_ayah">ايه النهاية</string>
-    <string name="btn_start">ابدأ</string>
+    <string name="btn_start">اختبار كامل </string>
     <string name="outofrange">خارج الحدود اكبر قيمة  %d</string>
     <string name="open_listening">استمع</string>
     <string name="error_net">شغل الانترنت وعاود المحاولة </string>
@@ -47,7 +47,7 @@
     <string name="test">اختبر</string>
     <string name="bookmark">المرجعيات</string>
     <string name="listen">استمع</string>
-
+    <string name="ayah">اكتب الايه </string>
 
 
 </resources>

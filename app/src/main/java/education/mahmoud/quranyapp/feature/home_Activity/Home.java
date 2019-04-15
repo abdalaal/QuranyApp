@@ -1,7 +1,9 @@
 package education.mahmoud.quranyapp.feature.home_Activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
@@ -14,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.facebook.stetho.Stetho;
 import com.tjeannin.apprate.AppRate;
 
 import java.util.ArrayList;
@@ -38,6 +41,10 @@ import education.mahmoud.quranyapp.feature.show_sura_list.SuraListFragment;
 import education.mahmoud.quranyapp.feature.test_quran.TestFragment;
 import education.mahmoud.quranyapp.model.Aya;
 import education.mahmoud.quranyapp.model.Sura;
+import pub.devrel.easypermissions.EasyPermissions;
+import pub.devrel.easypermissions.PermissionRequest;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class Home extends AppCompatActivity {
 
@@ -57,6 +64,8 @@ public class Home extends AppCompatActivity {
     private List<String> fragTitles;
     private FragmentAdapter adapter;
     private Repository repository;
+    private int RC_STORAGE = 1002;
+    private boolean isPermissionAllowed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +90,29 @@ public class Home extends AppCompatActivity {
         setupFragList();
         adapter = new FragmentAdapter(getSupportFragmentManager(), fragList, fragTitles);
         setupPager();
+        Stetho.initializeWithDefaults(getApplication());
 
+    }
+
+    public void acquirePermission() {
+        String[] perms = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+        EasyPermissions.requestPermissions(new PermissionRequest.Builder(this, RC_STORAGE, perms).build());
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == RC_STORAGE && grantResults[0] == PERMISSION_GRANTED) {
+            isPermissionAllowed = true;
+            repository.setPermissionState(true);
+        } else {
+            finish();
+        }
+    }
+
+    public boolean isPermissionAllowed() {
+        return isPermissionAllowed;
     }
 
     /**
@@ -121,17 +152,16 @@ public class Home extends AppCompatActivity {
         fragTitles = new ArrayList<>();
 
         SuraListFragment fragment = new SuraListFragment();
-        addFragemnt(fragment, fragment.getTilte());
+        addFragemnt(fragment, getString(R.string.read));
 
         ListenFragment listenFragment = new ListenFragment();
-        addFragemnt(listenFragment, listenFragment.getTitle());
+        addFragemnt(listenFragment, getString(R.string.listen));
 
         BookmarkFragment bookmarkFragment = new BookmarkFragment();
-        addFragemnt(bookmarkFragment, bookmarkFragment.getTitle());
+        addFragemnt(bookmarkFragment, getString(R.string.bookmark));
 
         TestFragment testFragment = new TestFragment();
-        addFragemnt(testFragment, testFragment.getTitle());
-
+        addFragemnt(testFragment, getString(R.string.test));
 
 
     }
