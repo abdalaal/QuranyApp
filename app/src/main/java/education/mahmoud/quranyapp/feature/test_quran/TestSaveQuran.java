@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,7 +28,7 @@ import education.mahmoud.quranyapp.data_layer.Repository;
 import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
 import education.mahmoud.quranyapp.data_layer.local.room.SuraItem;
 
-public class TestSaveQuran extends AppCompatActivity  implements SaveTestAdapter.IOnTestClick {
+public class TestSaveQuran extends AppCompatActivity implements SaveTestAdapter.IOnTestClick {
 
     private static final String TAG = "TestSaveQuran";
 
@@ -47,6 +48,10 @@ public class TestSaveQuran extends AppCompatActivity  implements SaveTestAdapter
     RecyclerView rvTestText;
     @BindView(R.id.lnTestLayout)
     LinearLayout lnTestLayout;
+    @BindView(R.id.btnTestSaveRandom)
+    Button btnTestSaveRandom;
+    @BindView(R.id.tvAyahToTestAfter)
+    TextView tvAyahToTestAfter;
 
 
     private Repository repository;
@@ -193,6 +198,9 @@ public class TestSaveQuran extends AppCompatActivity  implements SaveTestAdapter
     private void TestState() {
         lnSelectorAyahs.setVisibility(View.GONE);
         lnTestLayout.setVisibility(View.VISIBLE);
+
+        // used  only with random test
+        tvAyahToTestAfter.setVisibility(View.GONE);
     }
 
     /**
@@ -222,6 +230,7 @@ public class TestSaveQuran extends AppCompatActivity  implements SaveTestAdapter
 
     /**
      * show message by Toast
+     *
      * @param message message to be shown
      */
     private void showMessage(String message) {
@@ -234,22 +243,57 @@ public class TestSaveQuran extends AppCompatActivity  implements SaveTestAdapter
      */
     @Override
     public void onBackPressed() {
-        if (lnTestLayout.getVisibility() == View.VISIBLE){
+        if (lnTestLayout.getVisibility() == View.VISIBLE) {
             selectionState();
-        }else{
+        } else {
             finish();
         }
     }
 
     /**
      * handle and check text input and compare with ayah text to check save
+     *
      * @param item
      * @param editText
      */
     @Override
     public void onClickTestCheck(AyahItem item, TextInputEditText editText) {
         String ayah = editText.getText().toString();
-        Spannable spannable =  Util.getDiffSpannaled(item.getTextClean() , ayah);
-        editText.setText(spannable , TextView.BufferType.SPANNABLE);
+        Spannable spannable = Util.getDiffSpannaled(item.getTextClean(), ayah);
+        editText.setText(spannable, TextView.BufferType.SPANNABLE);
+    }
+
+    @OnClick(R.id.btnTestSaveRandom)
+    public void onbtnTestSaveRandom() {
+        checkInput();
+        if (isInputValid) {
+            ayahsToTest = repository.getAyahSInRange(actualStart, actualEnd );
+            if (ayahsToTest.size() >= 3) {
+                int r = new Random().nextInt(ayahsToTest.size()-1);
+                AyahItem ayahItem = ayahsToTest.get(r);
+                tvAyahToTestAfter.setText(getString(R.string.ayahToTestRanom , ayahItem.getTextClean()));
+                showMessage("s " + ayahItem.getAyahIndex());
+                ayahItem = ayahsToTest.get(r+1);
+                ayahsToTest.clear();
+                ayahsToTest.add(ayahItem);
+                adapter.setAyahItemList(ayahsToTest);
+                TestRandomState();
+            } else {
+                ayahsNotSufficentError();
+            }
+        }
+
+    }
+
+    private void TestRandomState() {
+        tvAyahToTestAfter.setVisibility(View.VISIBLE);
+        lnSelectorAyahs.setVisibility(View.GONE);
+        lnTestLayout.setVisibility(View.VISIBLE);
+    }
+
+    private void ayahsNotSufficentError() {
+        edStartSuraAyah.setError(getString(R.string.not_sufficient_ayahs));
+        edEndSuraAyah.setError(getString(R.string.not_sufficient_ayahs));
+
     }
 }

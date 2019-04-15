@@ -89,8 +89,13 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
     TextInputEditText edRepeatAyah;
     @BindView(R.id.edRepeatSet)
     TextInputEditText edRepeatSet;
-    private int ayahsRepeatCount;
-    private int ayahsSetCount;
+    @BindView(R.id.tvDownStatePercentage)
+    TextView tvDownStatePercentage;
+    @BindView(R.id.tvDownCurrentFile)
+    TextView tvDownCurrentFile;
+    @BindView(R.id.lnDownState)
+    LinearLayout lnDownState;
+
 
     private void makeAlertForPermission() {
 
@@ -128,6 +133,8 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
     int currentIteration = 0, endIteration;
     private Repository repository;
     private ArrayList<AyahItem> ayahsToDownLoad;
+    private int ayahsRepeatCount;
+    private int ayahsSetCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,17 +221,19 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
         path = Util.getDirectoryPath(); // get folder path
         // form file name
         filename = index + ".mp3";
-
         Log.d(TAG, "downloadAudio:  file name " + filename);
         //start downloading
         PRDownloader.download(downURL, path, filename).build().start(this);
 
+        // set text on screen downloaded / todownled
+        // second is show name of current file to download
+        tvDownCurrentFile.setText(getString(R.string.now_down , filename));
+        tvDownStatePercentage.setText(getString(R.string.downState ,currentIteration,endIteration));
     }
 
     @Override
     public void onDownloadComplete() {
         Log.d(TAG, "onDownloadComplete: ");
-
         // store storage path in db to use in media player
         AyahItem ayahItem = repository.getAyahByIndex(index); // first get ayah to edit it with storage path
         String storagePath = path + "/" + filename;
@@ -251,7 +260,7 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
     private void finishDownloadState() {
         showMessage(getString(R.string.finish));
         btnStartListening.setVisibility(View.VISIBLE);
-        spinListening.setVisibility(GONE);
+        lnDownState.setVisibility(GONE);
     }
 
     private void displayAyasState() {
@@ -283,7 +292,7 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
         }
 
         Log.d(TAG, "getAllAyahsRepeated: " + ayahItems.size());
-        return ayahItems ;
+        return ayahItems;
     }
 
     private List<AyahItem> getAyahsEachOneRepreated(int ayahsRepeatCount) {
@@ -417,8 +426,15 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
 
     @Override
     public void onError(Error error) {
-        showMessage(getString(R.string.error_net));
-        spinListening.setVisibility(GONE);
+        if (error.isConnectionError()){
+            showMessage(getString(R.string.error_net));
+        }else if (error.isServerError()){
+            showMessage("Server error");
+        }else{
+            showMessage("Error " + error.toString());
+        }
+
+        lnDownState.setVisibility(GONE);
     }
 
     @OnClick(R.id.btnStartListening)
@@ -455,7 +471,8 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
                     ayahsSetCount = Integer.parseInt(edRepeatSet.getText().toString());
                 } catch (NumberFormatException e) {
                     ayahsSetCount = 1;
-                }  try {
+                }
+                try {
                     ayahsRepeatCount = Integer.parseInt(edRepeatAyah.getText().toString());
                 } catch (NumberFormatException e) {
                     ayahsRepeatCount = 1;
@@ -512,18 +529,16 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
 
     private void downloadAyahs() {
         Log.d(TAG, "downloadAyahs: ");
-        if (Util.isNetworkConnected(this)) {
-            downloadState();
-            downloadAudio();
-        } else {
-            showMessage(getString(R.string.error_net));
-        }
+
+        downloadState();
+        downloadAudio();
+
     }
 
     private void downloadState() {
         showMessage(getString(R.string.downloading));
         btnStartListening.setVisibility(GONE);
-        spinListening.setVisibility(View.VISIBLE);
+        lnDownState.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -532,6 +547,9 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
             backToSelectionState();
         } else {
             super.onBackPressed();
+            if (mediaPlayer != null) {
+                mediaPlayer.release();
+            }
             finish();
         }
     }
@@ -545,7 +563,7 @@ public class ListeningActivity extends AppCompatActivity implements OnDownloadLi
         lnPlayView.setVisibility(GONE);
         lnSelectorAyahs.setVisibility(View.VISIBLE);
 
-        spinListening.setVisibility(GONE);
+        lnDownState.setVisibility(GONE);
 
     }
 }

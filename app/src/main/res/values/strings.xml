@@ -96,5 +96,14 @@
     <string name="yellow">Yellow</string>
     <string name="white">White</string>
     <string name="night_mode">Night Mode</string>
+    <string name="downState">%d / %d</string>
+    <string name="now_down">%s is being downloaded</string>
+    <string name="btn_start_random">Random Test</string>
+    <string name="ayahToTestRanom">Write Ayah After below Ayah \n {%s}</string>
+    <string name="not_sufficient_ayahs">number of ayahs must be more than 2</string>
+    <string name="read">Read</string>
+    <string name="test">Test</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="listen">Listen</string>
 
 </resources>

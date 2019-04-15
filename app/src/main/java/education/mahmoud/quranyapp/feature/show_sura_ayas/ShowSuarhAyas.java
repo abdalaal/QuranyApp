@@ -4,20 +4,24 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import education.mahmoud.quranyapp.R;
 import education.mahmoud.quranyapp.Util.Constants;
 import education.mahmoud.quranyapp.Util.Data;
 import education.mahmoud.quranyapp.Util.Util;
 import education.mahmoud.quranyapp.data_layer.Repository;
 import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
+import education.mahmoud.quranyapp.data_layer.local.room.BookmarkItem;
 
 public class ShowSuarhAyas extends AppCompatActivity {
 
@@ -29,6 +33,8 @@ public class ShowSuarhAyas extends AppCompatActivity {
     ScrollView scrollView;
     @BindView(R.id.lnShowAyahs)
     LinearLayout lnShowAyahs;
+    @BindView(R.id.imBookmark)
+    ImageView imBookmark;
 
     private Repository repository;
     int index;
@@ -68,8 +74,8 @@ public class ShowSuarhAyas extends AppCompatActivity {
         });
 
         /*
-        *
-        * ResourcesCompat.getColor(getResources(), R.color.your_color, null); //without themes
+         *
+         * ResourcesCompat.getColor(getResources(), R.color.your_color, null); //without themes
          */
         // check Night Mode
         if (repository.getNightModeState()) {
@@ -82,7 +88,7 @@ public class ShowSuarhAyas extends AppCompatActivity {
 
             // check user color for background
             int col = repository.getBackColorState();
-            switch (col){
+            switch (col) {
                 case Constants.GREEN:
                     lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_green));
                     break;
@@ -90,12 +96,10 @@ public class ShowSuarhAyas extends AppCompatActivity {
                     lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_white));
                     break;
 
-                 case Constants.YELLOW:
-                     lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_yellow));
-                     break;
+                case Constants.YELLOW:
+                    lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_yellow));
+                    break;
             }
-
-
 
 
         }
@@ -126,5 +130,20 @@ public class ShowSuarhAyas extends AppCompatActivity {
     private void showMessage(String message) {
         //  Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         Log.d(TAG, message);
+    }
+
+    @OnClick(R.id.imBookmark)
+    public void onViewClicked() {
+        BookmarkItem bookmarkItem = new BookmarkItem();
+
+        int scroll = scrollView.getScrollY();
+        String name = Data.SURA_NAMES[index];
+        long miilis = new Date().getTime();
+
+        bookmarkItem.setScrollIndex(scroll);
+        bookmarkItem.setSuraName(name);
+        bookmarkItem.setTimemills(miilis);
+
+        repository.addBookmark(bookmarkItem);
     }
 }

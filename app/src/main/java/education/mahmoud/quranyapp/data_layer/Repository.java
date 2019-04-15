@@ -4,8 +4,9 @@ import android.app.Application;
 
 import java.util.List;
 
-import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
 import education.mahmoud.quranyapp.data_layer.local.LocalShared;
+import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
+import education.mahmoud.quranyapp.data_layer.local.room.BookmarkItem;
 import education.mahmoud.quranyapp.data_layer.local.room.QuranDB;
 import education.mahmoud.quranyapp.data_layer.local.room.SuraItem;
 
@@ -32,12 +33,15 @@ public class Repository {
     public void addLastSura(int index) {
         localShared.addLastSura(index);
     }
+
     public void addLastSuraWithScroll(int index) {
         localShared.addLastSuraWithScroll(index);
     }
+
     public int getLastSura() {
         return localShared.getLastSura();
     }
+
     public int getLastSuraWithScroll() {
         return localShared.getLastSuraWithScroll();
     }
@@ -65,7 +69,6 @@ public class Repository {
     public void setBackColorState(int color) {
         localShared.setBackColorState(color);
     }
-
 
 
     // suarh db operation
@@ -110,6 +113,21 @@ public class Repository {
     public void updateAyahItem(AyahItem item) {
         quranDB.ayahDAO().updateAyah(item);
     }
+
+
+    // bookmark
+    public List<BookmarkItem> getBookmarks() {
+        return quranDB.bookmarkDao().getBookmarks();
+    }
+
+    public void addBookmark(BookmarkItem item){
+        quranDB.bookmarkDao().addBookmark(item);
+    }
+
+    public void deleteBookmark(BookmarkItem item){
+        quranDB.bookmarkDao().delteBookmark(item);
+    }
+
 
 
 

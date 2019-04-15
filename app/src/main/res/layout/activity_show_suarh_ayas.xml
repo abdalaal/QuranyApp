@@ -3,20 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/lnShowAyahs"
     tools:context=".feature.show_sura_ayas.ShowSuarhAyas">
 
-    <TextView
-        android:id="@+id/tvSuraNameShowAyas"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:alpha="@android:integer/config_mediumAnimTime"
-        android:gravity="center_horizontal"
-        android:textSize="@dimen/_22ssp"
-        android:textColor="@color/ayas_color"
-        tools:text="HHH" />
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/_16sdp"
+        android:paddingTop="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/tvSuraNameShowAyas"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:alpha="@android:integer/config_mediumAnimTime"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/_22ssp"
+            android:textColor="@color/ayas_color"
+            tools:text="HHH" />
+
+        <ImageView
+            android:id="@+id/imBookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_book"
+           />
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollView"

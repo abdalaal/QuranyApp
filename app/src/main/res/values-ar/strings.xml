@@ -36,6 +36,18 @@
     <string name="yellow">اصفر</string>
     <string name="white">ابيض</string>
     <string name="night_mode">تفعيل وضع القراءة الليلي</string>
+    <string name="downState">%d / %d</string>
+    <string name="now_down">%s يتم تحميل</string>
+    <string name="btn_start_random">اختبار ذكي</string>
+    <string name="ayahToTestRanom">اكتب الاية التى تلى الاية \n
+    {%s} </string>
+
+    <string name="not_sufficient_ayahs">عدد الايات يكون اكتر من 2 </string>
+    <string name="read">اقرأ</string>
+    <string name="test">اختبر</string>
+    <string name="bookmark">المرجعيات</string>
+    <string name="listen">استمع</string>
+
 
 
 </resources>

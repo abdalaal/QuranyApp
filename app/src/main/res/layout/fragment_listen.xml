@@ -8,7 +8,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:padding="@dimen/_10sdp"
-    tools:context=".feature.listening_activity.ListeningActivity">
+    tools:context=".feature.listening_activity.ListenFragment">
 
     <LinearLayout
         android:id="@+id/lnSelectorAyahs"
@@ -87,43 +87,43 @@
             android:text="@string/btn_start"
             android:textColor="@color/ayas_color" />
 
-       <LinearLayout
-           android:id="@+id/lnDownState"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           android:layout_marginBottom="@dimen/_16sdp"
-           android:layout_marginTop="@dimen/_16sdp"
-           android:visibility="gone">
+        <LinearLayout
+            android:id="@+id/lnDownState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:visibility="gone">
 
-           <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
-               android:id="@+id/spinListening"
-               style="@style/SpinKitView.Large.Circle"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center"
-               android:layout_marginTop="@dimen/_16sdp"
-               app:SpinKit_Color="@color/spin_color" />
+            <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/spinListening"
+                style="@style/SpinKitView.Large.Circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_16sdp"
+                app:SpinKit_Color="@color/spin_color" />
 
-           <TextView
-               android:id="@+id/tvDownStatePercentage"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/_22ssp"
-               android:text="@string/downState"/>
+            <TextView
+                android:id="@+id/tvDownStatePercentage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/_22ssp"
+                android:text="@string/downState"/>
 
-           <TextView
-               android:id="@+id/tvDownCurrentFile"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:textSize="@dimen/_22ssp"
-               android:text="@string/now_down"/>
+            <TextView
+                android:id="@+id/tvDownCurrentFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/_22ssp"
+                android:text="@string/now_down"/>
 
 
 
-       </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
