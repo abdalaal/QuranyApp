@@ -62,6 +62,8 @@ public class TestFragment extends Fragment {
     @BindView(R.id.lnTestLayout)
     LinearLayout lnTestLayout;
     Unbinder unbinder;
+    @BindView(R.id.tvTestRange)
+    TextView tvTestRange;
     private Repository repository;
     private SuraItem startSura;
     private SuraItem endSura;
@@ -72,7 +74,9 @@ public class TestFragment extends Fragment {
 
     SaveTestAdapter adapter = new SaveTestAdapter();
 
-    private boolean isTestVisible ;
+    private boolean isTestVisible;
+    private int start;
+    private int end;
 
 
     @Override
@@ -91,16 +95,15 @@ public class TestFragment extends Fragment {
     }
 
     /**
-     *
      * @param isVisibleToUser
      */
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
 
-       if(isVisibleToUser && lnSelectorAyahs != null){
-           selectionState();
-       }
+        if (isVisibleToUser && lnSelectorAyahs != null) {
+            selectionState();
+        }
     }
 
     /**
@@ -164,7 +167,6 @@ public class TestFragment extends Fragment {
     }
 
 
-
     /**
      * called when btn is clicked it first check inputs then load ayahs from db
      */
@@ -174,7 +176,6 @@ public class TestFragment extends Fragment {
         if (isInputValid) {
             ayahsToTest = repository.getAyahSInRange(actualStart, actualEnd);
             adapter.setAyahItemList(ayahsToTest);
-
             TestState();
         }
     }
@@ -186,12 +187,12 @@ public class TestFragment extends Fragment {
         //region check inputs
         if (startSura != null && endSura != null) {
             try {
-                int start = Integer.parseInt(edStartSuraAyah.getText().toString());
+                start = Integer.parseInt(edStartSuraAyah.getText().toString());
                 if (start > startSura.getNumOfAyahs()) {
                     edStartSuraAyah.setError(getString(R.string.outofrange, startSura.getNumOfAyahs()));
                     return;
                 }
-                int end = Integer.parseInt(edEndSuraAyah.getText().toString());
+                end = Integer.parseInt(edEndSuraAyah.getText().toString());
                 if (end > endSura.getNumOfAyahs()) {
                     edEndSuraAyah.setError(getString(R.string.outofrange, endSura.getNumOfAyahs()));
                     return;
@@ -207,12 +208,11 @@ public class TestFragment extends Fragment {
                     return;
                 }
                 Log.d(TAG, "onViewClicked: actual " + actualStart + " " + actualEnd);
-
                 // get ayas from db
                 ayahsToTest = repository.getAyahSInRange(actualStart, actualEnd);
-
                 isInputValid = true;
-
+                // place data in UI
+                tvTestRange.setText(getString(R.string.rangeoftest ,startSura.getName(),start,endSura.getName(),end));
                 // close keyboard
                 closeKeyboard();
 
@@ -246,8 +246,11 @@ public class TestFragment extends Fragment {
         lnTestLayout.setVisibility(View.GONE);
         adapter.clear();
 
+        // clear inputs1
         edEndSuraAyah.setText(null);
         edStartSuraAyah.setText(null);
+        edEndSuraAyah.setError(null);
+        edStartSuraAyah.setError(null);
 
 
     }
@@ -256,8 +259,10 @@ public class TestFragment extends Fragment {
      * if range of ayahs is incorrect it raise error messages
      */
     private void makeRangeError() {
-        edStartSuraAyah.setError("Start must be before end ");
-        edEndSuraAyah.setError("End must be after start");
+        edStartSuraAyah.setError(getString(R.string.start_range_error));
+     //   edEndSuraAyah.setError(getString(R.string.end_range_error));
+        showMessage(getString(R.string.start_range_error));
+
     }
 
     /**
@@ -275,19 +280,18 @@ public class TestFragment extends Fragment {
     private void showMessage(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
-    
 
 
     @OnClick(R.id.btnTestSaveRandom)
     public void onbtnTestSaveRandom() {
         checkInput();
         if (isInputValid) {
-            ayahsToTest = repository.getAyahSInRange(actualStart, actualEnd );
+            ayahsToTest = repository.getAyahSInRange(actualStart, actualEnd);
             if (ayahsToTest.size() >= 3) {
-                int r = new Random().nextInt(ayahsToTest.size()-1);
+                int r = new Random().nextInt(ayahsToTest.size() - 1);
                 AyahItem ayahItem = ayahsToTest.get(r);
-                tvAyahToTestAfter.setText(getString(R.string.ayahToTestRanom , ayahItem.getTextClean()));
-                ayahItem = ayahsToTest.get(r+1);
+                tvAyahToTestAfter.setText(getString(R.string.ayahToTestRanom, ayahItem.getTextClean()));
+                ayahItem = ayahsToTest.get(r + 1);
                 ayahsToTest.clear();
                 ayahsToTest.add(ayahItem);
                 adapter.setAyahItemList(ayahsToTest);

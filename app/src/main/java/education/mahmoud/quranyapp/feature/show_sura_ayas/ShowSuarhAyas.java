@@ -30,8 +30,8 @@ public class ShowSuarhAyas extends AppCompatActivity {
     TextView tvAyahs;
     @BindView(R.id.tvSuraNameShowAyas)
     TextView tvSuraNameShowAyas;
-    @BindView(R.id.scrollView)
-    ScrollView scrollView;
+  /*  @BindView(R.id.scrollView)
+    ScrollView scrollView;*/
     @BindView(R.id.lnShowAyahs)
     LinearLayout lnShowAyahs;
     @BindView(R.id.imBookmark)
@@ -68,37 +68,37 @@ public class ShowSuarhAyas extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
       //  showMessage(" intented scroll " + scroll);
-        scrollView.post(new Runnable() {
+       /* scrollView.post(new Runnable() {
             public void run() {
                 scrollView.smoothScrollTo(0, scroll);
             }
         });
-
+*/
         /*
          *
          * ResourcesCompat.getColor(getResources(), R.color.your_color, null); //without themes
          */
         // check Night Mode
         if (repository.getNightModeState()) {
-            tvSuraNameShowAyas.setTextColor(getResources().getColor(R.color.ayas_color_night_mode));
+//            tvSuraNameShowAyas.setTextColor(getResources().getColor(R.color.ayas_color_night_mode));
             tvAyahs.setTextColor(getResources().getColor(R.color.ayas_color_night_mode));
-            lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_ays_night_mode));
+            tvAyahs.setBackgroundColor(getResources().getColor(R.color.bg_ays_night_mode));
         } else {
-            tvSuraNameShowAyas.setTextColor(getResources().getColor(R.color.ayas_color));
+//            tvSuraNameShowAyas.setTextColor(getResources().getColor(R.color.ayas_color));
             tvAyahs.setTextColor(getResources().getColor(R.color.ayas_color));
 
             // check user color for background
             int col = repository.getBackColorState();
             switch (col) {
                 case Constants.GREEN:
-                    lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_green));
+                    tvAyahs.setBackgroundColor(getResources().getColor(R.color.bg_green));
                     break;
                 case Constants.WHITE:
-                    lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_white));
+                    tvAyahs.setBackgroundColor(getResources().getColor(R.color.bg_white));
                     break;
 
                 case Constants.YELLOW:
-                    lnShowAyahs.setBackgroundColor(getResources().getColor(R.color.bg_yellow));
+                    tvAyahs.setBackgroundColor(getResources().getColor(R.color.bg_yellow));
                     break;
             }
 
@@ -123,8 +123,8 @@ public class ShowSuarhAyas extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Repository.getInstance(getApplication()).addLastSura(index);
-        int lastScroll = scrollView.getScrollY();
-        Repository.getInstance(getApplication()).addLastSuraWithScroll(lastScroll);
+//        int lastScroll = scrollView.getScrollY();
+//        Repository.getInstance(getApplication()).addLastSuraWithScroll(lastScroll);
      }
 
     private void showMessage(String message) {
@@ -135,7 +135,7 @@ public class ShowSuarhAyas extends AppCompatActivity {
     public void onViewClicked() {
         BookmarkItem bookmarkItem = new BookmarkItem();
 
-        int scroll = scrollView.getScrollY();
+//        int scroll = scrollView.getScrollY();
         String name = Data.SURA_NAMES[index];
         long miilis = new Date().getTime();
 

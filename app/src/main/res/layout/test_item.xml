@@ -21,15 +21,20 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:hint="@string/ayah"
-        android:background="@color/bg_show_ays"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:inputType="textAutoComplete"
+        android:background="@drawable/back_edit_search"
         android:textColor="@color/ayas_color"
         android:textSize="@dimen/_25ssp"/>
 
     <Button
         android:id="@+id/btnCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
         android:background="@drawable/ic_spellcheck"
+        android:layout_marginBottom="@dimen/_10sdp"
         />
 
 </LinearLayout>

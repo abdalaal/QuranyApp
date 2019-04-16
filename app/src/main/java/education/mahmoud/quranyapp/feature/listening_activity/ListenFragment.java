@@ -391,6 +391,7 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
         } catch (IOException e) {
             e.printStackTrace();
             showMessage(getString(R.string.error));
+            backToSelectionState();
         }
 
     }
@@ -406,7 +407,6 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
         }
 
         lnDownState.setVisibility(GONE);
-
         backToSelectionState();
     }
 
@@ -533,14 +533,20 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
             mediaPlayer = null;
         }
 
+        // control visibility
         lnPlayView.setVisibility(GONE);
         lnSelectorAyahs.setVisibility(View.VISIBLE);
-
+        btnStartListening.setVisibility(View.VISIBLE);
         lnDownState.setVisibility(GONE);
 
+        // clear inputs
         edEndSuraAyah.setText(null);
         edStartSuraAyah.setText(null);
+        edEndSuraAyah.setError(null);
+        edStartSuraAyah.setError(null);
         edRepeatAyah.setText(null);
+        edRepeatSet.setText(null);
+
 
     }
 
@@ -548,5 +554,11 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        showMessage("pause");
     }
 }

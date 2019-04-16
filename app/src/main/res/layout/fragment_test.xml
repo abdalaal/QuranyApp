@@ -18,7 +18,7 @@
         <Spinner
             android:id="@+id/spStartSura"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginBottom="@dimen/_16sdp"
             android:background="@drawable/back_edit_search"
             />
@@ -38,7 +38,7 @@
         <Spinner
             android:id="@+id/spEndSura"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginBottom="@dimen/_16sdp"
             android:background="@drawable/back_edit_search"
             />
@@ -76,6 +76,8 @@
                 android:layout_gravity="center"
                 android:background="@drawable/back_search_res"
                 android:text="@string/btn_start_random"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
                 android:textColor="@color/bg_white"/>
 
 
@@ -89,6 +91,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tvTestRange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/textRange"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/rangeoftest"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"

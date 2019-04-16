@@ -18,7 +18,7 @@
             android:text="555555"
             android:textColor="@color/bg_white"
             android:gravity="center_horizontal"
-            android:textSize="@dimen/_22ssp" />
+            android:textSize="@dimen/_15ssp" />
 
         <TextView
             android:id="@+id/tvSuraNameBookmark"
@@ -31,12 +31,13 @@
             android:textSize="@dimen/_22ssp" />
 
         <ImageView
+            android:id="@+id/imDeleteBookmark"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/_5sdp"
             android:layout_gravity="center_horizontal"
-            app:srcCompat="@drawable/ic_book"/>
+            app:srcCompat="@drawable/ic_delete"/>
 
 
 

@@ -48,6 +48,12 @@
     <string name="bookmark">المرجعيات</string>
     <string name="listen">استمع</string>
     <string name="ayah">اكتب الايه </string>
+    <string name="btn_listen">استمع</string>
+    <string name="rangeoftest">من سورة %s الايه  %d  \n
+    الى سورة %s  ايه %d</string>
+    <string name="start_range_error">سورة البداية يجب ان تكون قبل سورة النهاية</string>
+    <string name="end_range_error">End  Sura must be after start</string>
+    <string name="deleted">تم الحذف</string>
 
 
 </resources>

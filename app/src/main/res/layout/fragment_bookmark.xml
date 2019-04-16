@@ -7,11 +7,21 @@
     android:paddingStart="@dimen/_16sdp"
     android:paddingEnd="@dimen/_16sdp"
     android:background="@color/colorPrimary"
-    tools:context=".feature.bookmark_fragment.BookmarkFragment">
+    tools:context=".feature.bookmark_fragment.BookmarkFragment"
+    android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvBookmark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/tvNoBookMark"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/_22ssp"
+        android:textColor="@color/bg_white"
+        />
+
 
 </LinearLayout>

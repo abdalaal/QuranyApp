@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +40,9 @@ public class BookmarkFragment extends Fragment {
 
 
     private static final String TAG = "BookmarkFragment";
+    @BindView(R.id.tvNoBookMark)
+    TextView tvNoBookMark;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,7 +59,7 @@ public class BookmarkFragment extends Fragment {
     private void initRv() {
 
         bookmarkAdapter = new BookmarkAdapter();
-        LinearLayoutManager manager =new LinearLayoutManager(getContext());
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
         rvBookmark.setAdapter(bookmarkAdapter);
         rvBookmark.setLayoutManager(manager);
 
@@ -70,17 +75,41 @@ public class BookmarkFragment extends Fragment {
             }
         });
 
+        bookmarkAdapter.setIoBookmarkDelete(new BookmarkAdapter.IOBookmarkDelete() {
+            @Override
+            public void onBookmarkClick(BookmarkItem item) {
+                repository.deleteBookmark(item);
+                bookmarkAdapter.deleteItem(item);
+                Toast.makeText(getContext(), R.string.deleted, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
 
-        if (isVisibleToUser){
-            if (bookmarkAdapter != null && repository != null){
+        if (isVisibleToUser && rvBookmark != null ) {
+            if (bookmarkAdapter != null && repository != null) {
                 bookmarkAdapter.setBookmarkItemList(repository.getBookmarks());
+                if(bookmarkAdapter.getItemCount() > 0  ){
+                    availbaleData();
+                }else{
+                    noData();
+                }
             }
         }
+    }
+
+    private void noData() {
+        rvBookmark.setVisibility(View.GONE);
+        tvNoBookMark.setVisibility(View.VISIBLE);
+    }
+
+    private void availbaleData() {
+        rvBookmark.setVisibility(View.VISIBLE);
+        tvNoBookMark.setVisibility(View.GONE);
     }
 
     private int getIndexOfString(String suraName) {
@@ -90,8 +119,12 @@ public class BookmarkFragment extends Fragment {
 
     private void retriveBookmarks() {
         bookmarkAdapter.setBookmarkItemList(repository.getBookmarks());
+        if(bookmarkAdapter.getItemCount() > 0  ){
+            availbaleData();
+        }else{
+            noData();
+        }
     }
-
 
 
     @Override

@@ -43,5 +43,10 @@
     <string name="bookmark">Bookmark</string>
     <string name="listen">Listen</string>
     <string name="ayah">ayah</string>
+    <string name="btn_listen">listen</string>
+    <string name="rangeoftest">From %s ayah %d to %s ayah %d</string>
+    <string name="start_range_error">Start Sura  must be before end</string>
+    <string name="end_range_error">End  Sura must be after start</string>
+    <string name="deleted">Deleted</string>
 
 </resources>

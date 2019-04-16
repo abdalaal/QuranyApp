@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@drawable/back_border_page"
         android:paddingEnd="@dimen/_16sdp"
         android:paddingTop="@dimen/_10sdp">
 
@@ -20,10 +21,10 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:alpha="@android:integer/config_mediumAnimTime"
             android:gravity="center_horizontal"
-            android:textSize="@dimen/_22ssp"
+            android:textSize="@dimen/_17ssp"
             android:textColor="@color/ayas_color"
             tools:text="HHH" />
 
@@ -35,21 +36,36 @@
            />
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/scrollView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/_23sdp"
+        android:background="@drawable/ic_border"
+        >
         <TextView
             android:id="@+id/tvAyahs"
+            android:padding="@dimen/_6sdp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_height="match_parent"
             android:textSize="@dimen/_25ssp"
+            android:gravity="center_horizontal"
             android:textColor="@color/ayas_color"
             android:textIsSelectable="true"
-            tools:text="Hello" />
+            android:isScrollContainer="true"
+            android:scrollbars="vertical"
+            tools:text="Hellod" />
 
-    </ScrollView>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tvPageNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/bg_ays_night_mode"
+        android:textSize="@dimen/_22ssp"
+        android:text="1"/>
 
 </LinearLayout>

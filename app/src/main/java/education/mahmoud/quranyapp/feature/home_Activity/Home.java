@@ -157,12 +157,12 @@ public class Home extends AppCompatActivity {
         ListenFragment listenFragment = new ListenFragment();
         addFragemnt(listenFragment, getString(R.string.listen));
 
-        BookmarkFragment bookmarkFragment = new BookmarkFragment();
-        addFragemnt(bookmarkFragment, getString(R.string.bookmark));
 
         TestFragment testFragment = new TestFragment();
         addFragemnt(testFragment, getString(R.string.test));
 
+        BookmarkFragment bookmarkFragment = new BookmarkFragment();
+        addFragemnt(bookmarkFragment, getString(R.string.bookmark));
 
     }
 
