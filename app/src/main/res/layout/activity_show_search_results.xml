@@ -20,7 +20,7 @@
         android:paddingTop="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
         android:paddingBottom="@dimen/_10sdp"
-        android:textSize="@dimen/_22ssp" />
+        android:textSize="@dimen/_17ssp" />
 
     <TextView
         android:id="@+id/tvSearchCount"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_16sdp"
         android:textColor="@color/font_results"
-        android:textSize="@dimen/_25ssp"
+        android:textSize="@dimen/_17ssp"
         tools:text="ssdww" />
 
     <FrameLayout

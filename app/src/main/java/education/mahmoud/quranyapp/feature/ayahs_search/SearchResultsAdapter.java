@@ -91,8 +91,6 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
                 holder.tvSearchResult.setText(item.getText());
             }
         });
-
-
     }
 
     @Override
@@ -100,13 +98,21 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         return list.size();
     }
 
+    public int getItemIndex(AyahItem ayahItem) {
+        return list.indexOf(ayahItem);
+    }
+
+    public void updateItem(AyahItem ayahItem, int itemIndex) {
+        list.set(itemIndex , ayahItem);
+        notifyDataSetChanged();
+    }
 
     interface IOnPlay {
         void onPlayClick(AyahItem item);
     }
 
     interface IOnDownload {
-        void onDownloadClick(AyahItem item);
+        void onDownloadClick(AyahItem item , int pos);
     }
 
     class Holder extends RecyclerView.ViewHolder {
@@ -129,7 +135,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
             btnDownloadSearch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    iOnDownload.onDownloadClick(list.get(getAdapterPosition()));
+                    iOnDownload.onDownloadClick(list.get(getAdapterPosition()) ,getAdapterPosition());
                 }
             });
 

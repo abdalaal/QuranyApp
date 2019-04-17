@@ -93,6 +93,7 @@ public class BookmarkFragment extends Fragment {
         if (isVisibleToUser && rvBookmark != null ) {
             if (bookmarkAdapter != null && repository != null) {
                 bookmarkAdapter.setBookmarkItemList(repository.getBookmarks());
+                Log.d(TAG, "setUserVisibleHint: " + bookmarkAdapter.getItemCount());
                 if(bookmarkAdapter.getItemCount() > 0  ){
                     availbaleData();
                 }else{

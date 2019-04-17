@@ -90,10 +90,10 @@ public class Util {
         Pattern p = Pattern.compile(REGEX);
         Matcher m = p.matcher(text);
 
-        Log.d(TAG, text + "getSpanOfText: word " + word);
+    //    Log.d(TAG, text + "getSpanOfText: word " + word);
         while (m.find()) {
-            Log.d(TAG, "getSpanOfText: start " + m.start());
-            Log.d(TAG, "getSpanOfText: end " + m.end());
+//            Log.d(TAG, "getSpanOfText: start " + m.start());
+//            Log.d(TAG, "getSpanOfText: end " + m.end());
             spannable.setSpan(new ForegroundColorSpan(Color.YELLOW), m.start(), m.end(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         }

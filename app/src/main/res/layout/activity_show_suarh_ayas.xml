@@ -40,32 +40,61 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="@dimen/_23sdp"
+        android:orientation="horizontal"
         android:background="@drawable/ic_border"
         >
+       <ScrollView
+           android:id="@+id/sc_ayahs_text"
+           android:layout_margin="@dimen/_23sdp"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <TextView
+               android:id="@+id/tvAyahs"
+               android:padding="@dimen/_6sdp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="@dimen/_25ssp"
+               android:gravity="center_horizontal"
+               android:textColor="@color/ayas_color"
+               android:textIsSelectable="true"
+               android:isScrollContainer="true"
+               android:scrollbars="vertical"
+               tools:text="Hellod" />
+       </ScrollView>
+
         <TextView
-            android:id="@+id/tvAyahs"
-            android:padding="@dimen/_6sdp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="@dimen/_25ssp"
-            android:gravity="center_horizontal"
-            android:textColor="@color/ayas_color"
-            android:textIsSelectable="true"
-            android:isScrollContainer="true"
-            android:scrollbars="vertical"
-            tools:text="Hellod" />
+            android:text="111111"/>
+
 
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/tvPageNum"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/bg_ays_night_mode"
-        android:textSize="@dimen/_22ssp"
-        android:text="1"/>
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
 
+     <TextView
+         android:id="@+id/tvPageNum"
+         android:layout_width="0dp"
+         android:layout_weight="1"
+         android:layout_height="wrap_content"
+         android:gravity="center"
+         android:layout_marginEnd="@dimen/_10sdp"
+         android:textColor="@color/bg_ays_night_mode"
+         android:textSize="@dimen/_22ssp"
+         android:text=""
+         android:visibility="gone"/>
+
+     <SeekBar
+         android:id="@+id/sbRate"
+         android:layout_width="0dp"
+         android:layout_weight="1"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:max="10"
+         android:layout_margin="@dimen/_10sdp"/>
+
+ </LinearLayout>
 </LinearLayout>

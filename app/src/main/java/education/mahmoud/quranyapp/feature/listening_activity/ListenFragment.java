@@ -195,11 +195,11 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && lnPlayView != null){
             backToSelectionState();
-        }else{
-            /*if (lnPlayView != null && mediaPlayer != null){
+        }/*else{
+            *//*if (lnPlayView != null && mediaPlayer != null){
                 mediaPlayer.release();
-            }*/
-        }
+            }*//*
+        }*/
     }
 
     @Override
@@ -559,6 +559,6 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
     @Override
     public void onPause() {
         super.onPause();
-        showMessage("pause");
+      //  showMessage("pause");
     }
 }

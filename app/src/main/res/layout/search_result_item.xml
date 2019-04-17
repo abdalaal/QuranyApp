@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:textSize="@dimen/_25ssp"
+            android:textSize="@dimen/search_text_size"
             android:textStyle="bold"
             tools:text="aaa" />
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:textSize="@dimen/_25ssp"
+            android:textSize="@dimen/search_text_size"
             tools:text="10" />
     </LinearLayout>
 
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:textSize="@dimen/_25ssp"
+        android:textSize="@dimen/search_text_size"
         tools:text="@tools:sample/lorem/random" />
 
     <LinearLayout

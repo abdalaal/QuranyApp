@@ -54,6 +54,9 @@ public class ShowSearchResults extends AppCompatActivity implements OnDownloadLi
 
 
     private boolean isPermissionAllowed ;
+    private List<AyahItem> ayahItems;
+    private String ayah;
+    private int itemPos; // hold pos of item in adapter used for updating item
 
     private void foundState() {
         rvSearch.setVisibility(View.VISIBLE);
@@ -109,9 +112,9 @@ public class ShowSearchResults extends AppCompatActivity implements OnDownloadLi
 
             @Override
             public void afterTextChanged(Editable editable) {
-                String ayah = editable.toString();
+                ayah = editable.toString();
                 if (ayah.length() > 0) {
-                    List<AyahItem> ayahItems = repository.getAyahByAyahText(ayah);
+                    ayahItems = repository.getAyahByAyahText(ayah);
                     Log.d(TAG, "afterTextChanged: " + ayahItems.size());
 
                     int count = ayahItems.size(); // n of results
@@ -140,9 +143,10 @@ public class ShowSearchResults extends AppCompatActivity implements OnDownloadLi
 
         adapter.setiOnDownload(new SearchResultsAdapter.IOnDownload() {
             @Override
-            public void onDownloadClick(AyahItem item) {
-                showMessage("Start Downloading .....");
+            public void onDownloadClick(AyahItem item , int pos ) {
+                showMessage(getString(R.string.downloading));
                 downloadAudio(item);
+                itemPos = pos ;
             }
         });
 
@@ -216,9 +220,16 @@ public class ShowSearchResults extends AppCompatActivity implements OnDownloadLi
         Log.d(TAG, "onDownloadComplete: ");
         // store storage path in db to use in media player
         AyahItem ayahItem = repository.getAyahByIndex(index); // first get ayah to edit it with storage path
+       /* // get index to usued in update in adapter
+       // int itemIndex = adapter.getItemIndex(ayahItem);
+        int itemIndex = ayahItems.indexOf(ayahItem);
+        Log.d(TAG, "onDownloadComplete: " + itemIndex);
+*/
+
         String storagePath = path + "/" + filename;
         ayahItem.setAudioPath(storagePath); // set path
         repository.updateAyahItem(ayahItem);
+        adapter.updateItem(ayahItem , itemPos);
 
         playAudio(ayahItem);
 
