@@ -1,5 +1,7 @@
 package education.mahmoud.quranyapp.Util;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +13,13 @@ public class TestText {
     private List<Point> deletionPoints  ;
     private List<Point> correctPoints  ;
     private String resString ;
+    
+    private  int totalScore ; 
+    
 
     public  void gitDiff (String src , String dst){
+        
+        totalScore = 0 ;
         insertionPoints = new ArrayList<>() ;
         deletionPoints =new ArrayList<>() ;
         correctPoints =new ArrayList<>() ;
@@ -52,6 +59,21 @@ public class TestText {
 
     public List<Point> getDeletionPoints() {
         return deletionPoints;
+    }
+
+    public int getTotalScore() {
+        totalScore = 0 ; // intial value = 0
+        for(Point point : insertionPoints){
+            totalScore -= (point.getEnd() - point.getStart()) ;
+        }
+        for(Point point : deletionPoints){
+            totalScore -= 2*(point.getEnd() - point.getStart()) ;
+        }
+        for(Point point : correctPoints){
+            totalScore += 2*(point.getEnd() - point.getStart()) ;
+        }
+
+        return totalScore;
     }
 }
 

@@ -97,6 +97,7 @@ public class BookmarkFragment extends Fragment {
                 if(bookmarkAdapter.getItemCount() > 0  ){
                     availbaleData();
                 }else{
+                    Log.d(TAG, "setUserVisibleHint:  no data");
                     noData();
                 }
             }

@@ -14,18 +14,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".feature.download.Download"></activity>
+        <activity
+            android:name=".feature.scores.ScoreActivity"
+            android:exported="true" />
+        <activity
+            android:name=".feature.profile.ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Util.testsomefeature.testtafseer.Main2Activity"
+            android:exported="true"></activity>
+        <activity android:name=".feature.feedback_activity.FeedbackActivity" />
         <activity
             android:name=".feature.home_Activity.Home"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/AppTheme.NoActionBar">
-
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".feature.setting.SettingActivity" />
         <activity
@@ -39,14 +49,12 @@
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".feature.ayahs_search.ShowSearchResults"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="true"/>
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".feature.show_sura_ayas.ShowSuarhAyas"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".feature.show_sura_list.ShowSuar">
-
-        </activity>
+        <activity android:name=".feature.show_sura_list.ShowSuar" />
 
         <meta-data
             android:name="preloaded_fonts"

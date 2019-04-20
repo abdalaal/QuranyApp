@@ -117,12 +117,22 @@ public class TestFragment extends Fragment {
         adapter.setiOnTestClick(new SaveTestAdapter.IOnTestClick() {
             @Override
             public void onClickTestCheck(AyahItem item, TextInputEditText editText) {
+                // processing of user text
                 String ayah = editText.getText().toString();
                 Spannable spannable = Util.getDiffSpannaled(item.getTextClean(), ayah);
+                updateTotalScore(Util.getTotalScore());
                 editText.setText(spannable, TextView.BufferType.SPANNABLE);
             }
         });
 
+    }
+
+    private void updateTotalScore(long totalScore) {
+        Log.d(TAG, "updateTotalScore:  earned " + totalScore);
+        long cuurentTotalScore = repository.getScore();
+        Log.d(TAG, "updateTotalScore: bedfore update " + cuurentTotalScore);
+        cuurentTotalScore += totalScore ;
+        repository.setScore(cuurentTotalScore);
     }
 
 
@@ -252,7 +262,6 @@ public class TestFragment extends Fragment {
         edEndSuraAyah.setError(null);
         edStartSuraAyah.setError(null);
 
-
     }
 
     /**
@@ -260,7 +269,6 @@ public class TestFragment extends Fragment {
      */
     private void makeRangeError() {
         edStartSuraAyah.setError(getString(R.string.start_range_error));
-     //   edEndSuraAyah.setError(getString(R.string.end_range_error));
         showMessage(getString(R.string.start_range_error));
 
     }

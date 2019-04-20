@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -27,9 +31,11 @@ import education.mahmoud.quranyapp.Util.Util;
 import education.mahmoud.quranyapp.data_layer.Repository;
 import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
 import education.mahmoud.quranyapp.data_layer.local.room.BookmarkItem;
+import education.mahmoud.quranyapp.feature.ayahs_search.ShowSearchResults;
 
 public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
+    private static final int DEFINITION = 1  ;
     @BindView(R.id.tvAyahs)
     TextView tvAyahs;
     @BindView(R.id.tvSuraNameShowAyas)
@@ -54,6 +60,7 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
     private static final String TAG = "ShowSuarhAyas";
     int scroll;
     private int rate;
+    int y ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +104,73 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
             }
         }.start();
 
+        tvAyahs.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                // Remove the "cut" option
+                menu.removeItem(android.R.id.cut);
+                // Remove the "copy all" option
+                return true;
+            }
+
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                // Called when action mode is first created. The menu supplied
+                // will be used to generate action buttons for the action mode
+                // Here is an example MenuItem
+                menu.add(0, DEFINITION, 0, R.string.tafseer).setIcon(R.drawable.ic_book);
+                return true;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                // Called when an action mode is about to be exited and
+                // destroyed
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                switch (item.getItemId()) {
+                    case DEFINITION:
+                        int min = 0;
+                        int max = tvAyahs.getText().length();
+                        if (tvAyahs.isFocused()) {
+                            final int selStart = tvAyahs.getSelectionStart();
+                            final int selEnd = tvAyahs.getSelectionEnd();
+
+                            min = Math.max(0, Math.min(selStart, selEnd));
+                            max = Math.max(0, Math.max(selStart, selEnd));
+                        }
+                        // Perform your definition lookup with the selected text
+                        final CharSequence selectedText = tvAyahs.getText().subSequence(min, max);
+                        try {
+                            int ayahIndex = Integer.parseInt(String.valueOf(selectedText));
+                            Log.d(TAG, "onActionItemClicked: index " + index);
+                            Log.d(TAG, "onActionItemClicked: ayah index " + ayahIndex);
+                            AyahItem ayahItem = repository.getAyahByInSurahIndex(  ++index, ayahIndex  );
+                            Log.d(TAG, "onActionItemClicked: " + ayahItem.getJuz());
+                            Log.d(TAG, "onActionItemClicked: " + ayahItem.getTextClean());
+
+                            if (ayahItem.getTafseer() != null){
+                                Util.getDialog(ShowSuarhAyas.this ,  ayahItem.getTafseer(), "Tafseer").show();
+                            }else{
+                                showMessage(getString(R.string.tafseer_not_down));
+                            }
+
+                        } catch (NumberFormatException e) {
+                            showMessage(getString(R.string.select_ayah));
+                        }
+                        // Finish and close the ActionMode
+                        mode.finish();
+                        return true;
+                    default:
+                        break;
+                }
+                return false;
+            }
+
+        });
     }
 
 
@@ -164,6 +238,25 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+
+    private void dynamicScroll() {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                scAyahsText.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        y = 25 * rate ;
+                        scAyahsText.smoothScrollBy(0 , y);
+                        Log.d(TAG, "run: " + y );
+                    }
+                });
+            }
+        };
+        timer.schedule(timerTask , 0 , 500);
+
+    }
     @OnClick(R.id.imBookmark)
     public void onViewClicked() {
         BookmarkItem bookmarkItem = new BookmarkItem();
@@ -184,30 +277,9 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-
         rate = i ;
-        
     }
 
-    int y ;
-    private void dynamicScroll() {
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                scAyahsText.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        y = 25 * rate ;
-                        scAyahsText.smoothScrollBy(0 , y);
-                        Log.d(TAG, "run: " + y );
-                    }
-                });
-            }
-        };
-        timer.schedule(timerTask , 0 , 500);
-
-    }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -218,4 +290,6 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
     public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
+
+
 }

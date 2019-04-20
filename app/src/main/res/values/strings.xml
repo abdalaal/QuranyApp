@@ -48,5 +48,19 @@
     <string name="start_range_error">Start Sura  must be before end</string>
     <string name="end_range_error">End  Sura must be after start</string>
     <string name="deleted">Deleted</string>
+    <string name="postives">Postives</string>
+    <string name="negatives">Negatives</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="send">send</string>
+    <string name="show_scoreboard">Show Scoreboard</string>
+    <string name="score">score</string>
+    <string name="profile">profile</string>
+    <string name="score_str">%d \n %s</string>
+    <string name="download_tafseer_data">Download Tafseer Data</string>
+    <string name="download">download data</string>
+    <string name="tafseer">Show Tafseer</string>
+    <string name="no_bookmarks">No Bookmarks</string>
+    <string name="select_ayah">Please select num of ayah</string>
+    <string name="tafseer_not_down">Download Tafseer first</string>
 
 </resources>

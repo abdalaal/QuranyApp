@@ -22,5 +22,27 @@
         android:orderInCategory="100"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/actionDownload"
+        android:title="@string/download"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+
+
+     <item
+        android:id="@+id/actionScore"
+        android:title="@string/score"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+     <item
+        android:id="@+id/actionprofile"
+        android:title="@string/profile"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+
+
 
 </menu>

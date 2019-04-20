@@ -1,6 +1,6 @@
 package education.mahmoud.quranyapp.Util;
 
-import android.arch.persistence.room.util.StringUtil;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -10,8 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -21,11 +23,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import education.mahmoud.quranyapp.R;
 import education.mahmoud.quranyapp.model.Quran;
 
 public class Util {
@@ -90,7 +92,7 @@ public class Util {
         Pattern p = Pattern.compile(REGEX);
         Matcher m = p.matcher(text);
 
-    //    Log.d(TAG, text + "getSpanOfText: word " + word);
+        //    Log.d(TAG, text + "getSpanOfText: word " + word);
         while (m.find()) {
 //            Log.d(TAG, "getSpanOfText: start " + m.start());
 //            Log.d(TAG, "getSpanOfText: end " + m.end());
@@ -138,32 +140,33 @@ public class Util {
     }
 
 
-    public  static Spannable getDiffSpannaled(String original, String toCompStr){
-        TestText testText = new TestText();
+    private static TestText testText;
+
+    public static Spannable getDiffSpannaled(String original, String toCompStr) {
+        testText = new TestText();
         testText.gitDiff(original, toCompStr);
         String res = testText.getResString();
-        return getSpannable(res ,testText.getCorrectPoints() ,testText.getInsertionPoints(),testText.getDeletionPoints());
+        return getSpannable(res, testText.getCorrectPoints(), testText.getInsertionPoints(), testText.getDeletionPoints());
 
     }
 
-    public static Spannable getSpannable(String text ,List<Point> correctPoints , List<Point> insertPoints  , List<Point> delePoint) {
+    public static Spannable getSpannable(String text, List<Point> correctPoints, List<Point> insertPoints, List<Point> delePoint) {
         Spannable spannable = new SpannableString(text);
 
-        for(Point point : insertPoints){
+        for (Point point : insertPoints) {
             spannable.setSpan(new ForegroundColorSpan(Color.YELLOW), point.getStart()
                     , point.getEnd(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
-        for(Point point : delePoint){
+        for (Point point : delePoint) {
             spannable.setSpan(new ForegroundColorSpan(Color.RED), point.getStart()
                     , point.getEnd(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
-        for(Point point : correctPoints){
+        for (Point point : correctPoints) {
             spannable.setSpan(new ForegroundColorSpan(Color.GREEN), point.getStart()
                     , point.getEnd(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
-
 
 
         return spannable;
@@ -171,4 +174,25 @@ public class Util {
     }
 
 
+    public static long getTotalScore() {
+        if (testText != null){
+            return testText.getTotalScore();
+        }
+        return 0 ;
+    }
+
+
+    public static String getArabicStrOfNum(long n ){
+        ArabicTools tools = new ArabicTools();
+        return tools.numberToArabicWords(String.valueOf(n));
+    }
+
+
+
+    public static AlertDialog getDialog(Context context, String message, String title) {
+        View view = LayoutInflater.from(context).inflate(R.layout.custome_dialoge_title , null) ;
+        TextView textView = view.findViewById(R.id.tvDialogeText);
+        textView.setText(message);
+        return new AlertDialog.Builder(context).setView(view).create();
+    }
 }

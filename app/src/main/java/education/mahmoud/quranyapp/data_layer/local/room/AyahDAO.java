@@ -26,13 +26,15 @@ public interface AyahDAO {
     @Query("select  * from ayahs where `ayahIndex` = :id")
     public AyahItem getAyahByIndex(int id);
 
-
     @Query("select  * from ayahs where textClean like  '%' || :txt || '%' ")
     public List<AyahItem> getAyahByAyahText(String txt);
-
 
     @Query("select count(*) from ayahs")
     public int getAyahCount();
 
+    @Query("select max(juz) from ayahs where tafseer is not null ")
+    public int getLastChapter();
 
+    @Query("select  * from ayahs where `surahIndex` = :index  and ayahInSurahIndex = :ayahIndex")
+    AyahItem getAyahByInSurahIndex(int index, int ayahIndex);
 }

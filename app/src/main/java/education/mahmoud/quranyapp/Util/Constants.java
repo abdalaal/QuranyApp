@@ -16,4 +16,5 @@ public interface Constants {
     String PERMISSION_STATE = "state";
     String NightMode_STATE = "night mode " ;
     String BackColor_STATE = "bg_color";
+    String SCORE = "score";
 }

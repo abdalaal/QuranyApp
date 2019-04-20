@@ -55,6 +55,11 @@ public class LocalShared {
     }
 
 
+    public void setScore(long score) {
+         preferences.edit().putLong(Constants.SCORE , score).apply();
+    }
 
-
+    public long getScore() {
+        return preferences.getLong(Constants.SCORE , 0);
+    }
 }

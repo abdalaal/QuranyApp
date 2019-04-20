@@ -9,12 +9,17 @@ import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
 import education.mahmoud.quranyapp.data_layer.local.room.BookmarkItem;
 import education.mahmoud.quranyapp.data_layer.local.room.QuranDB;
 import education.mahmoud.quranyapp.data_layer.local.room.SuraItem;
+import education.mahmoud.quranyapp.data_layer.remote.Remote;
+import education.mahmoud.quranyapp.data_layer.remote.model.Tafseer;
+import education.mahmoud.quranyapp.data_layer.remote.model.User;
+import retrofit2.Call;
 
 public class Repository {
 
     private static LocalShared localShared;
     private static Repository instance;
     private static QuranDB quranDB;
+    private static Remote remote;
 
     private Repository() {
     }
@@ -24,6 +29,7 @@ public class Repository {
             instance = new Repository();
             localShared = new LocalShared(context);
             quranDB = QuranDB.getInstance(context);
+            remote = new Remote();
         }
         return instance;
     }
@@ -71,6 +77,14 @@ public class Repository {
     }
 
 
+    public void setScore(long score ){
+        localShared.setScore(score);
+    }
+    public long getScore() {
+        return localShared.getScore();
+    }
+
+
     // suarh db operation
     public void addSurah(SuraItem suraItem) {
         quranDB.surahDAO().addSurah(suraItem);
@@ -114,6 +128,9 @@ public class Repository {
         quranDB.ayahDAO().updateAyah(item);
     }
 
+    public int getLastDownloadedChapter() {
+        return quranDB.ayahDAO().getLastChapter();
+    }
 
     // bookmark
     public List<BookmarkItem> getBookmarks() {
@@ -130,5 +147,35 @@ public class Repository {
 
 
 
+    // tafseer
+    public Call<Tafseer> getChapterTafser(int id){
+        return remote.getChapterTafser(id);
+    }
 
+
+    // remote data
+
+    public Call<String> signUp(User user) {
+       return remote.signUp(user);
+    }
+
+    public Call<String> signUp(String name , String mail ,long score, int n_ayahs) {
+       return remote.signUp(name, mail, score, n_ayahs);
+    }
+
+    public AyahItem getAyahByInSurahIndex(int index, int ayahIndex) {
+        return quranDB.ayahDAO().getAyahByInSurahIndex(index ,ayahIndex);
+    }
+
+    public Call<String> getUsers() {
+        return remote.getUsers();
+    }
+
+    /* public Call<List<User>> getUsers() {
+        return remote.getUsers();
+    }*/
+
+    public Call<Void> sendFeedback( String pros ,  String cons ,  String suggs ){
+        return remote.sendFeedback(pros , cons , suggs);
+    }
 }
