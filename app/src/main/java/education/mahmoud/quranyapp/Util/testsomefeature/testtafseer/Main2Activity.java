@@ -36,7 +36,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private void loadChapter(int currentChapter) {
 
-        repository.getChapterTafser(currentChapter).enqueue(new Callback<Tafseer>() {
+      /*  repository.getChapterTafser(currentChapter).enqueue(new Callback<Tafseer>() {
             @Override
             public void onResponse(Call<Tafseer> call, Response<Tafseer> response) {
                 Tafseer tafseer = response.body();
@@ -59,7 +59,7 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
 
-
+*/
     }
 
     private static final String TAG = "Main2Activity";

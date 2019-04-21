@@ -33,13 +33,13 @@ import education.mahmoud.quranyapp.data_layer.local.room.SuraItem;
 import education.mahmoud.quranyapp.feature.ayahs_search.ShowSearchResults;
 import education.mahmoud.quranyapp.feature.bookmark_fragment.BookmarkFragment;
 import education.mahmoud.quranyapp.feature.download.Download;
+import education.mahmoud.quranyapp.feature.feedback_activity.FeedbackActivity;
 import education.mahmoud.quranyapp.feature.listening_activity.ListenFragment;
 import education.mahmoud.quranyapp.feature.profile.ProfileActivity;
 import education.mahmoud.quranyapp.feature.scores.ScoreActivity;
 import education.mahmoud.quranyapp.feature.setting.SettingActivity;
 import education.mahmoud.quranyapp.feature.show_sura_ayas.ShowSuarhAyas;
 import education.mahmoud.quranyapp.feature.show_sura_list.GoToSurah;
-import education.mahmoud.quranyapp.feature.show_sura_list.ShowSuar;
 import education.mahmoud.quranyapp.feature.show_sura_list.SuraListFragment;
 import education.mahmoud.quranyapp.feature.test_quran.TestFragment;
 import education.mahmoud.quranyapp.model.Aya;
@@ -261,8 +261,8 @@ public class Home extends AppCompatActivity {
 
 
     private void gotoProfile() {
-     //   Intent openAcivity = new Intent(this, ProfileActivity.class);
-   //     startActivity(openAcivity);
+        Intent openAcivity = new Intent(this, FeedbackActivity.class);
+        startActivity(openAcivity);
     }
 
     private void gotoScore() {

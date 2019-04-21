@@ -54,13 +54,13 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
     SeekBar sbRate;
 
 
-
     private Repository repository;
     int index;
     private static final String TAG = "ShowSuarhAyas";
     int scroll;
     private int rate;
     int y ;
+    String  selectedText ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +91,7 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
 
         sbRate.setOnSeekBarChangeListener(this);
 
-        new CountDownTimer(2200, 1000) {
+        new CountDownTimer(3200, 1000) {
             @Override
             public void onTick(long l) {
 
@@ -143,17 +143,20 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
                             max = Math.max(0, Math.max(selStart, selEnd));
                         }
                         // Perform your definition lookup with the selected text
-                        final CharSequence selectedText = tvAyahs.getText().subSequence(min, max);
+                        selectedText = tvAyahs.getText().subSequence(min, max).toString();
+                        // remove parentheses surround ayah to facilitate  user selection
+                        selectedText =  selectedText.replace('(' , ' ');
+                        selectedText =  selectedText.replace(')' , ' ');
+                        // remove spaces to not cause errors with parsing to integer
+                        selectedText = selectedText.replaceAll(" " , "");
+
                         try {
                             int ayahIndex = Integer.parseInt(String.valueOf(selectedText));
-                            Log.d(TAG, "onActionItemClicked: index " + index);
-                            Log.d(TAG, "onActionItemClicked: ayah index " + ayahIndex);
+                            // use ++index as index in Data is start from 0 and in database start from 1
                             AyahItem ayahItem = repository.getAyahByInSurahIndex(  ++index, ayahIndex  );
-                            Log.d(TAG, "onActionItemClicked: " + ayahItem.getJuz());
-                            Log.d(TAG, "onActionItemClicked: " + ayahItem.getTextClean());
-
+                            String message = getString(R.string.message_dialoge,ayahItem.getPageNum(),ayahItem.getTafseer());
                             if (ayahItem.getTafseer() != null){
-                                Util.getDialog(ShowSuarhAyas.this ,  ayahItem.getTafseer(), "Tafseer").show();
+                                Util.getDialog(ShowSuarhAyas.this ,  message, "Tafseer").show();
                             }else{
                                 showMessage(getString(R.string.tafseer_not_down));
                             }

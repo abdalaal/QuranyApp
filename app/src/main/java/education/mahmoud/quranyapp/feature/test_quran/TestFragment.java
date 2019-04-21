@@ -79,6 +79,7 @@ public class TestFragment extends Fragment {
     private int end;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -128,11 +129,13 @@ public class TestFragment extends Fragment {
     }
 
     private void updateTotalScore(long totalScore) {
-        Log.d(TAG, "updateTotalScore:  earned " + totalScore);
+//        Log.d(TAG, "updateTotalScore:  earned " + totalScore);
         long cuurentTotalScore = repository.getScore();
-        Log.d(TAG, "updateTotalScore: bedfore update " + cuurentTotalScore);
+//        Log.d(TAG, "updateTotalScore: bedfore update " + cuurentTotalScore);
         cuurentTotalScore += totalScore ;
         repository.setScore(cuurentTotalScore);
+
+        Util.getDialog(getContext() ,  getString(R.string.result , totalScore) , "").show();
     }
 
 

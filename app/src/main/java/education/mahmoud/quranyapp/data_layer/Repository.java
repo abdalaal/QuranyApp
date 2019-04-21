@@ -2,6 +2,9 @@ package education.mahmoud.quranyapp.data_layer;
 
 import android.app.Application;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.List;
 
 import education.mahmoud.quranyapp.data_layer.local.LocalShared;
@@ -10,6 +13,7 @@ import education.mahmoud.quranyapp.data_layer.local.room.BookmarkItem;
 import education.mahmoud.quranyapp.data_layer.local.room.QuranDB;
 import education.mahmoud.quranyapp.data_layer.local.room.SuraItem;
 import education.mahmoud.quranyapp.data_layer.remote.Remote;
+import education.mahmoud.quranyapp.data_layer.remote.model.Feedback;
 import education.mahmoud.quranyapp.data_layer.remote.model.Tafseer;
 import education.mahmoud.quranyapp.data_layer.remote.model.User;
 import retrofit2.Call;
@@ -77,9 +81,10 @@ public class Repository {
     }
 
 
-    public void setScore(long score ){
+    public void setScore(long score) {
         localShared.setScore(score);
     }
+
     public long getScore() {
         return localShared.getScore();
     }
@@ -120,6 +125,14 @@ public class Repository {
         return quranDB.ayahDAO().getAyahByAyahText(text);
     }
 
+    public List<Integer> getAyahNumberNotAudioDownloaded(){
+        return quranDB.ayahDAO().getAyahNumberNotAudioDownloaded();
+
+    }
+    public AyahItem getAyahByInSurahIndex(int index, int ayahIndex) {
+        return quranDB.ayahDAO().getAyahByInSurahIndex(index, ayahIndex);
+    }
+
     public AyahItem getAyahByIndex(int index) {
         return quranDB.ayahDAO().getAyahByIndex(index);
     }
@@ -132,50 +145,76 @@ public class Repository {
         return quranDB.ayahDAO().getLastChapter();
     }
 
+    public int getLastDownloadedAyahAudio() {
+        return quranDB.ayahDAO().getLastDownloadedAyahAudio();
+    }
+
+
     // bookmark
     public List<BookmarkItem> getBookmarks() {
         return quranDB.bookmarkDao().getBookmarks();
     }
 
-    public void addBookmark(BookmarkItem item){
+    public void addBookmark(BookmarkItem item) {
         quranDB.bookmarkDao().addBookmark(item);
     }
 
-    public void deleteBookmark(BookmarkItem item){
+    public void deleteBookmark(BookmarkItem item) {
         quranDB.bookmarkDao().delteBookmark(item);
     }
 
 
-
     // tafseer
-    public Call<Tafseer> getChapterTafser(int id){
+    public Call<Tafseer> getChapterTafser(int id) {
         return remote.getChapterTafser(id);
     }
 
 
     // remote data
 
+    public FirebaseAuth getAuth() {
+        return remote.getAuth();
+    }
+
+    public String getCurrentUserUUID() {
+        return remote.getCurrentUserUUID();
+    }
+
+    public void addUser(User user) {
+        remote.addUser(user);
+    }
+
+    public void updateUser(User user) {
+        remote.updateUser(user);
+    }
+
+    public DatabaseReference getUsers() {
+        return remote.getUsers();
+    }
+
+    public void addFeedback(Feedback feedback) {
+        remote.addFeedback(feedback);
+    }
+
+
+
+    
+
+   /* public Call<String> getUsers() {
+        return remote.getUsers();
+    }
     public Call<String> signUp(User user) {
        return remote.signUp(user);
     }
-
     public Call<String> signUp(String name , String mail ,long score, int n_ayahs) {
        return remote.signUp(name, mail, score, n_ayahs);
     }
 
-    public AyahItem getAyahByInSurahIndex(int index, int ayahIndex) {
-        return quranDB.ayahDAO().getAyahByInSurahIndex(index ,ayahIndex);
+    public Call<Void> sendFeedback(String pros, String cons, String suggs) {
+        return remote.sendFeedback(pros, cons, suggs);
     }
 
-    public Call<String> getUsers() {
-        return remote.getUsers();
-    }
+*/
 
-    /* public Call<List<User>> getUsers() {
-        return remote.getUsers();
-    }*/
 
-    public Call<Void> sendFeedback( String pros ,  String cons ,  String suggs ){
-        return remote.sendFeedback(pros , cons , suggs);
-    }
 }

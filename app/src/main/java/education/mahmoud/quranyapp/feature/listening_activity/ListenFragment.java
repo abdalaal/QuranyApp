@@ -228,6 +228,20 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
         }
     }
 
+    @Override
+    public void onError(Error error) {
+        if (error.isConnectionError()){
+            showMessage(getString(R.string.error_net));
+        }else if (error.isServerError()){
+            showMessage("Server error");
+        }else{
+            showMessage("Error " + error.toString());
+        }
+
+        lnDownState.setVisibility(GONE);
+        backToSelectionState();
+    }
+
     private void finishDownloadState() {
         showMessage(getString(R.string.finish));
         btnStartListening.setVisibility(View.VISIBLE);
@@ -310,6 +324,73 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
             }
         }
 
+    }
+
+    @OnClick(R.id.btnStartListening)
+    public void onViewClicked() {
+        ayahsToDownLoad = new ArrayList<>();
+        ayahsToListen = new ArrayList<>();
+
+        //region check inputs
+        if (startSura != null && endSura != null) {
+            try {
+                int start = Integer.parseInt(edStartSuraAyah.getText().toString());
+                if (start > startSura.getNumOfAyahs()) {
+                    edStartSuraAyah.setError(getString(R.string.outofrange, startSura.getNumOfAyahs()));
+                    return;
+                }
+                int end = Integer.parseInt(edEndSuraAyah.getText().toString());
+                if (end > endSura.getNumOfAyahs()) {
+                    edEndSuraAyah.setError(getString(R.string.outofrange, endSura.getNumOfAyahs()));
+                    return;
+                }
+                // compute actual start
+                actualStart = startSura.getStartIndex() + start - 1;
+                // compute actual end
+                actualEnd = endSura.getStartIndex() + end - 1;
+
+                // check actualstart & actualEnd
+                if (actualEnd < actualStart) {
+                    makeRangeError();
+                    return;
+                }
+                Log.d(TAG, "onViewClicked: actual " + actualStart + " " + actualEnd);
+
+                try {
+                    ayahsSetCount = Integer.parseInt(edRepeatSet.getText().toString());
+                } catch (NumberFormatException e) {
+                    ayahsSetCount = 1;
+                }
+                try {
+                    ayahsRepeatCount = Integer.parseInt(edRepeatAyah.getText().toString());
+                } catch (NumberFormatException e) {
+                    ayahsRepeatCount = 1;
+                }
+
+                // get ayas from db
+                ayahsToListen = repository.getAyahSInRange(actualStart, actualEnd);
+                Log.d(TAG, "onViewClicked: start log after firest select ");
+                logAyahs();
+                // traverse ayahs to check if it downloaded or not
+                for (AyahItem ayahItem : ayahsToListen) {
+                    if (ayahItem.getAudioPath() == null) {
+                        ayahsToDownLoad.add(ayahItem);
+                    }
+                }
+
+                // close keyboard
+                closeKeyboard();
+
+                checkAyahsToDownloadIt();
+
+            } catch (NumberFormatException e) {
+                makeRangeError();
+            }
+
+        } else {
+            showMessage(getString(R.string.sura_select_error));
+        }
+        //endregion
     }
 
     private void playAudio() {
@@ -396,87 +477,6 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
 
     }
 
-    @Override
-    public void onError(Error error) {
-        if (error.isConnectionError()){
-            showMessage(getString(R.string.error_net));
-        }else if (error.isServerError()){
-            showMessage("Server error");
-        }else{
-            showMessage("Error " + error.toString());
-        }
-
-        lnDownState.setVisibility(GONE);
-        backToSelectionState();
-    }
-
-    @OnClick(R.id.btnStartListening)
-    public void onViewClicked() {
-        ayahsToDownLoad = new ArrayList<>();
-        ayahsToListen = new ArrayList<>();
-
-        //region check inputs
-        if (startSura != null && endSura != null) {
-            try {
-                int start = Integer.parseInt(edStartSuraAyah.getText().toString());
-                if (start > startSura.getNumOfAyahs()) {
-                    edStartSuraAyah.setError(getString(R.string.outofrange, startSura.getNumOfAyahs()));
-                    return;
-                }
-                int end = Integer.parseInt(edEndSuraAyah.getText().toString());
-                if (end > endSura.getNumOfAyahs()) {
-                    edEndSuraAyah.setError(getString(R.string.outofrange, endSura.getNumOfAyahs()));
-                    return;
-                }
-                // compute actual start
-                actualStart = startSura.getStartIndex() + start - 1;
-                // compute actual end
-                actualEnd = endSura.getStartIndex() + end - 1;
-
-                // check actualstart & actualEnd
-                if (actualEnd < actualStart) {
-                    makeRangeError();
-                    return;
-                }
-                Log.d(TAG, "onViewClicked: actual " + actualStart + " " + actualEnd);
-
-                try {
-                    ayahsSetCount = Integer.parseInt(edRepeatSet.getText().toString());
-                } catch (NumberFormatException e) {
-                    ayahsSetCount = 1;
-                }
-                try {
-                    ayahsRepeatCount = Integer.parseInt(edRepeatAyah.getText().toString());
-                } catch (NumberFormatException e) {
-                    ayahsRepeatCount = 1;
-                }
-
-                // get ayas from db
-                ayahsToListen = repository.getAyahSInRange(actualStart, actualEnd);
-                Log.d(TAG, "onViewClicked: start log after firest select ");
-                logAyahs();
-                // traverse ayahs to check if it downloaded or not
-                for (AyahItem ayahItem : ayahsToListen) {
-                    if (ayahItem.getAudioPath() == null) {
-                        ayahsToDownLoad.add(ayahItem);
-                    }
-                }
-
-                // close keyboard
-                closeKeyboard();
-
-                checkAyahsToDownloadIt();
-
-            } catch (NumberFormatException e) {
-                makeRangeError();
-            }
-
-        } else {
-            showMessage(getString(R.string.sura_select_error));
-        }
-        //endregion
-    }
-
     private void closeKeyboard() {
         edEndSuraAyah.clearFocus();
         edStartSuraAyah.clearFocus();
@@ -514,18 +514,6 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
         lnDownState.setVisibility(View.VISIBLE);
     }
 
-  /*  @Override
-    public void onBackPressed() {
-        if (lnPlayView.getVisibility() == View.VISIBLE) {
-            backToSelectionState();
-        } else {
-            super.onBackPressed();
-            if (mediaPlayer != null) {
-                mediaPlayer.release();
-            }
-            finish();
-        }
-    }*/
 
     private void backToSelectionState() {
         if (mediaPlayer != null) {
@@ -556,9 +544,4 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
         unbinder.unbind();
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-      //  showMessage("pause");
-    }
 }

@@ -138,16 +138,4 @@ public class Ayah {
         this.sajda = sajda;
     }
 
-    @Override
-    public String toString() {
-        return "Ayah{" +
-                "number=" + number +
-                ", text='" + text + '\'' +
-                ", numberInSurah=" + numberInSurah +
-                ", juz=" + juz +
-                ", page=" + page +
-                ", hizbQuarter=" + hizbQuarter +
-                ", sajda=" + sajda +
-                '}';
-    }
 }

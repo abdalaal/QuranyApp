@@ -17,6 +17,16 @@
         android:background="@drawable/back_search_res"
         android:text="@string/download_tafseer_data"/>
 
+    <Button
+        android:id="@+id/btnDownloadSound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_16sdp"
+        android:background="@drawable/back_search_res"
+        android:text="@string/download_audio_data"/>
+
+
+
     <LinearLayout
         android:id="@+id/lnDown"
         android:layout_width="match_parent"

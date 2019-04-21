@@ -6,12 +6,40 @@
     android:layout_marginBottom="@dimen/_16sdp"
     android:background="@drawable/back_search_res"
     android:orientation="vertical"
-    android:padding="@dimen/_10sdp">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_8sdp"
+        android:gravity="center"
+        android:paddingTop="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_5sdp"
+       >
+
+        <Button
+            android:id="@+id/btnShowTafseer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@string/tafseerbtn"
+            android:background="@drawable/back_edit_search"/>
+
+        <Button
+            android:id="@+id/btnShowTashkeel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tashkeel"
+            android:layout_marginStart="@dimen/_100sdp"
+            android:background="@drawable/back_edit_search"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_6sdp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -53,12 +81,6 @@
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:background="@drawable/ic_play" />
-
-        <ImageButton
-            android:id="@+id/btnDownloadSearch"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:background="@drawable/ic_file_download" />
 
 
     </LinearLayout>

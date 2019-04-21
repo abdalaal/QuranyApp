@@ -29,12 +29,18 @@ public interface AyahDAO {
     @Query("select  * from ayahs where textClean like  '%' || :txt || '%' ")
     public List<AyahItem> getAyahByAyahText(String txt);
 
+    @Query("select ayahIndex from ayahs where audioPath is  null ")
+    public List<Integer> getAyahNumberNotAudioDownloaded();
+
     @Query("select count(*) from ayahs")
     public int getAyahCount();
 
-    @Query("select max(juz) from ayahs where tafseer is not null ")
+    @Query("select max(surahIndex) from ayahs where tafseer is not null ")
     public int getLastChapter();
 
     @Query("select  * from ayahs where `surahIndex` = :index  and ayahInSurahIndex = :ayahIndex")
     AyahItem getAyahByInSurahIndex(int index, int ayahIndex);
+
+    @Query("select max(ayahIndex) from ayahs where audioPath is not null ")
+    int getLastDownloadedAyahAudio();
 }

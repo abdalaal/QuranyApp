@@ -1,13 +1,12 @@
 package education.mahmoud.quranyapp.data_layer.remote.model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class User {
 
-    private String name ;
-    private String email ;
-    private int score ;
-        private int n_ayahs;
+    private String key;
+    private String name;
+    private String email;
+    private int score;
+    private int n_ayahs;
 
     public User() {
     }
@@ -16,6 +15,30 @@ public class User {
         this.name = name;
         this.email = email;
         this.score = score;
+        this.n_ayahs = n_ayahs;
+    }
+
+    public User(String key, String name, String email, int score, int n_ayahs) {
+        this.key = key;
+        this.name = name;
+        this.email = email;
+        this.score = score;
+        this.n_ayahs = n_ayahs;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public int getN_ayahs() {
+        return n_ayahs;
+    }
+
+    public void setN_ayahs(int n_ayahs) {
         this.n_ayahs = n_ayahs;
     }
 

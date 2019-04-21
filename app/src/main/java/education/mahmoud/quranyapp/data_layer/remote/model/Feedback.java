@@ -1,5 +1,8 @@
 package education.mahmoud.quranyapp.data_layer.remote.model;
 
+import android.support.annotation.Keep;
+
+@Keep
 public class Feedback {
 
     private String positives ;
@@ -7,7 +10,10 @@ public class Feedback {
     private String suggestions ;
     private String appVersion ;
 
-    public Feedback() {
+    public Feedback(String positives, String negatives, String suggestions) {
+        this.positives = positives;
+        this.negatives = negatives;
+        this.suggestions = suggestions;
     }
 
     public Feedback(String positives, String negatives, String suggestions, String appVersion) {

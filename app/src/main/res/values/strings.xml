@@ -62,5 +62,18 @@
     <string name="no_bookmarks">No Bookmarks</string>
     <string name="select_ayah">Please select num of ayah</string>
     <string name="tafseer_not_down">Download Tafseer first</string>
+    <string name="message_dialoge">Page: %d \n
+    Tafseer :\n
+    %s</string>
+    <string name="result">result: %d </string>
+    <string name="red_color_represent_missing_text">Red color represent missing text (-2 pts)</string>
+    <string name="yellow_color_represent_additional_wrong_text">Yellow color represent additional (wrong) text (-1 pts)</string>
+    <string name="green_color_represent_correct_text">Green color represent correct text(+2 pts)</string>
+    <string name="tafseerbtn">Tafseer</string>
+    <string name="tashkeel">Tashkeel</string>
+    <string name="your_score">Your Score</string>
+    <string name="download_audio_data">Download Audio</string>
+    <string name="not_downlod_audio">PLEASE Download Audio first and Try to play</string>
+    <string name="thanks">Thanks</string>
 
 </resources>

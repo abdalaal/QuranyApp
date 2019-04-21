@@ -4,6 +4,12 @@
     tools:context="education.mahmoud.quranyapp.feature.home_Activity.Home">
 
     <item
+        android:id="@+id/actionJump"
+        android:orderInCategory="100"
+        android:title="@string/jump"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/actionGoToLastRead"
         android:orderInCategory="100"
         android:title="@string/go_to_latest_read"

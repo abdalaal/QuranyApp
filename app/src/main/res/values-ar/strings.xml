@@ -59,15 +59,28 @@
     <string name="suggestions">اقتراحات</string>
     <string name="send">شارك برأيك </string>
     <string name="show_scoreboard">قائمة المستخدمين</string>
-    <string name="score">الرصيد</string>
+    <string name="score">النقاط</string>
     <string name="profile">ملفك الشخصى</string>
     <string name="score_str">%d \n %s</string>
-    <string name="download_tafseer_data">Download Tafseer Data</string>
-    <string name="download">download data</string>
+    <string name="download_tafseer_data">تحميل ملفات التفسير </string>
+    <string name="download">تحميل البيانات </string>
     <string name="tafseer">التفسير</string>
     <string name="no_bookmarks">المرجعيات فارغة </string>
-    <string name="select_ayah">Please select num of ayah</string>
-    <string name="tafseer_not_down">Download Tafseer first</string>
+    <string name="select_ayah">برجاء اختيار رقم الاية والا تحتوي على احرف </string>
+    <string name="tafseer_not_down">برجاء التوجه لصفحة التحميل لتحميل ملفات التفسير </string>
+    <string name="message_dialoge">صفحة : %d \n
+    تفسيرها : \n
+    %s</string>
+    <string name="result">نقاطك: %d</string>
+    <string name="red_color_represent_missing_text">يدل اللون الاحمر الى خطأ (ينقص نقطتين)</string>
+    <string name="yellow_color_represent_additional_wrong_text">يدل اللون الاصفر الى زيادة حرف عن النص الاصلي (ينقص نقطة)</string>
+    <string name="green_color_represent_correct_text">يدل اللون الاخضر الى صحة التسميع (تزد نقطتين)</string>
+    <string name="tafseerbtn">عرض التفسير </string>
+    <string name="tashkeel">اظهار التشكيل</string>
+    <string name="your_score">نقاطك</string>
+    <string name="download_audio_data">تحميل ملفات الصوت</string>
+    <string name="not_downlod_audio">لا يتوفر ملف الصوت برجاء تحميله من صفحة التحميل </string>
+    <string name="thanks">Thanks</string>
 
 
 </resources>

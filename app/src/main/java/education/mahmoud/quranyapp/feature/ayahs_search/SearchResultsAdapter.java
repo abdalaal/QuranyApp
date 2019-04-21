@@ -7,6 +7,7 @@ import android.text.Spannable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -22,21 +23,17 @@ import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
 
 public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.Holder> {
 
+
     private List<AyahItem> list;
 
     private String wordSearched;
     private Typeface typeface;
 
-    IOnDownload iOnDownload;
     IOnPlay iOnPlay;
 
     public SearchResultsAdapter(Typeface typeface) {
         list = new ArrayList<>();
         this.typeface = typeface;
-    }
-
-    public void setiOnDownload(IOnDownload iOnDownload) {
-        this.iOnDownload = iOnDownload;
     }
 
     public void setiOnPlay(IOnPlay iOnPlay) {
@@ -77,18 +74,17 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         holder.tvSearchResult.setTypeface(typeface);
         holder.tvSearchSuraName.setTypeface(typeface);
 
-        if (item.getAudioPath() != null) {
-            holder.btnPlayInSearch.setVisibility(View.VISIBLE);
-            holder.btnDownloadSearch.setVisibility(View.GONE);
-        } else {
-            holder.btnPlayInSearch.setVisibility(View.GONE);
-            holder.btnDownloadSearch.setVisibility(View.VISIBLE);
-        }
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.btnShowTashkeel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 holder.tvSearchResult.setText(item.getText());
+            }
+        });
+
+        holder.btnShowTafseer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Util.getDialog(holder.itemView.getContext() ,item.getTafseer(),"" ).show();
             }
         });
     }
@@ -103,7 +99,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
     }
 
     public void updateItem(AyahItem ayahItem, int itemIndex) {
-        list.set(itemIndex , ayahItem);
+        list.set(itemIndex, ayahItem);
         notifyDataSetChanged();
     }
 
@@ -111,9 +107,6 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         void onPlayClick(AyahItem item);
     }
 
-    interface IOnDownload {
-        void onDownloadClick(AyahItem item , int pos);
-    }
 
     class Holder extends RecyclerView.ViewHolder {
 
@@ -125,19 +118,14 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         TextView tvSearchResult;
         @BindView(R.id.btnPlayInSearch)
         ImageButton btnPlayInSearch;
-        @BindView(R.id.btnDownloadSearch)
-        ImageButton btnDownloadSearch;
+        @BindView(R.id.btnShowTafseer)
+        Button btnShowTafseer;
+        @BindView(R.id.btnShowTashkeel)
+        Button btnShowTashkeel;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
-            btnDownloadSearch.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    iOnDownload.onDownloadClick(list.get(getAdapterPosition()) ,getAdapterPosition());
-                }
-            });
 
             btnPlayInSearch.setOnClickListener(new View.OnClickListener() {
                 @Override

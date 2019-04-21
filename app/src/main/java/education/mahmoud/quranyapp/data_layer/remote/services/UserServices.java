@@ -6,6 +6,7 @@ import education.mahmoud.quranyapp.data_layer.remote.model.User;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -25,7 +26,8 @@ public interface UserServices {
     @GET("getusers.php")
     Call<String> getUsers();
 
-    @POST("feedback.php")
+    @FormUrlEncoded
+    @POST("addFeedback.php")
     Call<Void> sendFeedback( @Field("pros") String pros , @Field("cons") String cons , @Field("suggs") String suggs );
 
 }

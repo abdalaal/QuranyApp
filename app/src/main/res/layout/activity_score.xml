@@ -20,9 +20,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Score "
+            android:text="@string/your_score"
             android:gravity="center_horizontal"
-            android:textSize="@dimen/_30ssp"
+            android:textSize="@dimen/text_score_title"
             android:layout_marginBottom="@dimen/_16sdp"/>
 
 
@@ -33,7 +33,7 @@
             android:text="@string/score_str"
             android:background="@drawable/back_edit_search"
             android:gravity="center_horizontal"
-            android:textSize="@dimen/_50ssp" />
+            android:textSize="@dimen/score_value" />
 
 
         <Button
@@ -52,7 +52,7 @@
             android:id="@+id/rvScoreboard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"></android.support.v7.widget.RecyclerView>
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

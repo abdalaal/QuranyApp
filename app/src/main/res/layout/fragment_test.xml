@@ -115,21 +115,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Red color represent missing text"
+                android:text="@string/red_color_represent_missing_text"
                 android:textColor="@color/descrip_text"
                 android:textSize="@dimen/describeColors" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Yellow color represent additional (wrong) text"
+                android:text="@string/yellow_color_represent_additional_wrong_text"
                 android:textColor="@color/descrip_text"
                 android:textSize="@dimen/describeColors" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Green color represent correct text"
+                android:text="@string/green_color_represent_correct_text"
                 android:textColor="@color/descrip_text"
                 android:textSize="@dimen/describeColors" />
 

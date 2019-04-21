@@ -65,19 +65,6 @@ public class ProfileActivity extends AppCompatActivity {
         });*/
 
 
-       Call<String> users =  repository.getUsers();
-       users.enqueue(new Callback<String>() {
-           @Override
-           public void onResponse(Call<String> call, Response<String> response) {
-               Log.d(TAG, "onResponse: res " + response.body());
-           }
-
-           @Override
-           public void onFailure(Call<String> call, Throwable t) {
-               Log.d(TAG, "onFailure: " + t.getMessage());
-           }
-       });
-
 
     }
 }
