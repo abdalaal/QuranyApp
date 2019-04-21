@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#8BC34A</color>
     <color name="colorPrimaryDark">#8BC34A</color>
-    <color name="colorAccent">#FFC107</color>
+    <color name="colorAccent">#83E610</color>
     <color name="font_results">#ffffff</color>
     <color name="bg_show_ays">#ACA9A9</color>
 
@@ -29,6 +29,15 @@
     <color name="bg_yellow" >#FCF4B1</color>
     <color name="bg_descript">#ECF1B2</color>
     <color name="descrip_text">#000000</color>
+
+
+    <!--colors for modern ui-->
+    <color name="whiteTextColor">#fff</color>
+    <color name="primaryTextColor">#03A9F4</color>
+    <color name="loginBkColor">#f0f0f0</color>
+
+    <!--colros for card-->
+    <color name="whiteCardColor">#fff</color>
 
 
 </resources>

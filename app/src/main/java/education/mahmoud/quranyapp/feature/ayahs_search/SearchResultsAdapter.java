@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +85,11 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         holder.btnShowTafseer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Util.getDialog(holder.itemView.getContext() ,item.getTafseer(),"" ).show();
+                if (item.getTafseer() != null) {
+                    Util.getDialog(holder.itemView.getContext() ,item.getTafseer(),"" ).show();
+                } else {
+                    Toast.makeText(holder.itemView.getContext(), holder.itemView.getContext().getText(R.string.tafseer_not_down) , Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

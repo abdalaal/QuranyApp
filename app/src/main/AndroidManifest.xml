@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".feature.splash.Splash" android:theme="@style/SplashTheme">
+        <activity
+            android:name=".feature.splash.Splash"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -24,9 +26,15 @@
 
         </activity>
 
-        <activity android:name=".feature.Login.Login" />
+        <activity android:name=".feature.register.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true"/>
 
-        <activity android:name=".feature.download.Download" />
+        <activity
+            android:name=".feature.download.Download"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".feature.scores.ScoreActivity"
@@ -46,8 +54,7 @@
             android:name=".feature.home_Activity.Home"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".feature.setting.SettingActivity" />
 
         <activity
@@ -57,6 +64,10 @@
         <activity
             android:name=".feature.show_sura_ayas.ShowSuarhAyas"
             android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false" />
+
 
         <meta-data
             android:name="preloaded_fonts"

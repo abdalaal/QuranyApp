@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
 
+import education.mahmoud.quranyapp.Util.Constants;
 import education.mahmoud.quranyapp.data_layer.local.LocalShared;
 import education.mahmoud.quranyapp.data_layer.local.room.AyahItem;
 import education.mahmoud.quranyapp.data_layer.local.room.BookmarkItem;
@@ -194,6 +195,18 @@ public class Repository {
 
     public void addFeedback(Feedback feedback) {
         remote.addFeedback(feedback);
+    }
+
+    public String getUserName() {
+        return localShared.getUserName();
+    }
+
+    public void setUserName(String userName) {
+       localShared.setUserName(userName);
+    }
+
+    public void setUserUUID(String uuid) {
+        localShared.setUserUUID(uuid);
     }
 
 

@@ -9,10 +9,21 @@
     android:padding="@dimen/_16sdp"
     tools:context=".feature.scores.ScoreActivity">
 
-    <LinearLayout
-        android:id="@+id/lnScore"
+
+    <TextView
+        android:id="@+id/tvWelcomeUser"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:padding="@dimen/_10sdp"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/textRange"
+        android:text="@string/welcome"/>
+
+    <LinearLayout
+        android:id="@+id/loggedLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_22sdp"
         android:orientation="vertical"
        >
@@ -48,13 +59,24 @@
             android:background="@drawable/back_search_res"
             android:layout_marginTop="@dimen/_16sdp"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvScoreboard"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnUploadScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/upload"/>
+
+
+    <Button
+        android:id="@+id/btnOpenLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/go_to_login"/>
+
+
+
 
 
 

@@ -20,4 +20,6 @@ public interface Constants {
 
     String USERS_KEY = "users";
     String REVIWES_KEY = "reviews";
+    String USER_NAME =  "user_name";
+    String USER_UUID = "uuid";
 }

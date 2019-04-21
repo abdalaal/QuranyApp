@@ -93,7 +93,7 @@
          android:layout_weight="1"
          android:layout_height="wrap_content"
          android:layout_gravity="center"
-         android:max="10"
+         android:max="30"
          android:layout_margin="@dimen/_10sdp"/>
 
  </LinearLayout>

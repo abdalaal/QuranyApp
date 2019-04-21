@@ -3,6 +3,7 @@ package education.mahmoud.quranyapp.data_layer.local;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import education.mahmoud.quranyapp.R;
 import education.mahmoud.quranyapp.Util.Constants;
 
 public class LocalShared {
@@ -62,4 +63,17 @@ public class LocalShared {
     public long getScore() {
         return preferences.getLong(Constants.SCORE , 0);
     }
+
+    public String getUserName() {
+        return preferences.getString(Constants.USER_NAME , null);
+    }
+
+    public void setUserName(String userName) {
+        preferences.edit().putString(Constants.USER_NAME , userName).apply();
+    }
+
+
+    public void setUserUUID(String uuid) {
+    preferences.edit().putString(Constants.USER_UUID , uuid).apply();
+        }
 }

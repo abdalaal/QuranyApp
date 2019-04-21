@@ -75,5 +75,20 @@
     <string name="download_audio_data">Download Audio</string>
     <string name="not_downlod_audio">PLEASE Download Audio first and Try to play</string>
     <string name="thanks">Thanks</string>
+    <string name="welcome">Welcome %s</string>
+    <string name="not_registered">not registered user</string>
+    <string name="upload">Upload Score</string>
+    <string name="go_to_login">Go To Login</string>
+
+    <string name="register">REGISTER</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+    <string name="name">Name</string>
+    <string name="wrong_name">Wrong name</string>
+    <string name="wrong_email">wrong email</string>
+    <string name="wrong_pass">wrong password</string>
+    <string name="not_req">Not Registered User, Creat account to upload your score</string>
 
 </resources>

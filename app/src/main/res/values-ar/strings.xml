@@ -80,7 +80,22 @@
     <string name="your_score">نقاطك</string>
     <string name="download_audio_data">تحميل ملفات الصوت</string>
     <string name="not_downlod_audio">لا يتوفر ملف الصوت برجاء تحميله من صفحة التحميل </string>
-    <string name="thanks">Thanks</string>
+    <string name="thanks">شكرا لتقييمك ومشاركتك </string>
+    <string name="welcome">مرحبا  %s</string>
+    <string name="not_registered">not registered user</string>
+    <string name="upload">أرسل نقاطك للسيرفر </string>
+    <string name="go_to_login">سجل دخول</string>
+
+    <string name="register">تسجيل</string>
+    <string name="login_email_hint">الايميل</string>
+    <string name="login_password_hint">كلمة المرور</string>
+    <string name="signup_login_hint">هل لديك حساب ؟ سجل دخولك</string>
+    <string name="login_signup_hint">ليس لديك حساب؟ انشأ حساب</string>
+    <string name="name">Name</string>
+    <string name="wrong_name">Wrong name</string>
+    <string name="wrong_email">wrong email</string>
+    <string name="wrong_pass">wrong password</string>
+    <string name="not_req">Not Registered User, Creat account to upload your score</string>
 
 
 </resources>

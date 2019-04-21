@@ -86,7 +86,8 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
             }
         });
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "kfgqpc_naskh.ttf");
+//        Typeface typeface = Typeface.createFromAsset(getAssets(), "kfgqpc_naskh.ttf");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "Scheherazade-Regular.ttf");
         tvAyahs.setTypeface(typeface);
 
         sbRate.setOnSeekBarChangeListener(this);
@@ -250,7 +251,7 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
                 scAyahsText.post(new Runnable() {
                     @Override
                     public void run() {
-                        y = 25 * rate ;
+                        y = 5 * rate ;
                         scAyahsText.smoothScrollBy(0 , y);
                         Log.d(TAG, "run: " + y );
                     }

@@ -80,7 +80,7 @@ public class ShowSearchResults extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 ayah = editable.toString();
-                if (!TextUtils.isEmpty(ayah) ) {
+                if (!TextUtils.isEmpty(ayah )  ) {
                     ayahItems = repository.getAyahByAyahText(ayah);
                     Log.d(TAG, "afterTextChanged: " + ayahItems.size());
 

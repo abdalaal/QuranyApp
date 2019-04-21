@@ -120,13 +120,13 @@ public class Download extends AppCompatActivity implements OnDownloadListener {
 
 
     private void loadTafseer() {
-        setUI(max_Tafseer);
+        setUI(tafseerToDownload,max_Tafseer);
         if (tafseerToDownload <= 114)
             loadChapter();
     }
 
-    private void setUI(int max) {
-        tvDownStatePercentage.setText(getString(R.string.downState, tafseerToDownload, max));
+    private void setUI( int current , int max) {
+        tvDownStatePercentage.setText(getString(R.string.downState, current, max));
     }
 
     private void loadChapter() {
@@ -210,13 +210,14 @@ public class Download extends AppCompatActivity implements OnDownloadListener {
 
     @OnClick(R.id.btnDownloadSound)
     public void onDownloadAudioClicked() {
+        audioToDownload = 0 ;
         audioIndexesToDownload = repository.getAyahNumberNotAudioDownloaded();
         downState();
         downlaodAudioData();
     }
 
     private void downlaodAudioData() {
-        setUI(audioIndexesToDownload.size());
+        setUI((audioToDownload+1),audioIndexesToDownload.size());
         if (audioToDownload < audioIndexesToDownload.size()){
             downloadAudio();
         }
@@ -224,11 +225,11 @@ public class Download extends AppCompatActivity implements OnDownloadListener {
 
     private void downloadAudio() {
             // form  URL
-            downURL = url + audioToDownload;
+            downURL = url + audioIndexesToDownload.get(audioToDownload);
             // form path
             path = Util.getDirectoryPath(); // get folder path
             // form file name
-            filename = audioToDownload + ".mp3";
+            filename = audioIndexesToDownload.get(audioToDownload) + ".mp3";
             Log.d(TAG, "downloadAudio:  file name " + filename);
             //start downloading
             PRDownloader.download(downURL, path, filename).build().start(this);
@@ -236,14 +237,19 @@ public class Download extends AppCompatActivity implements OnDownloadListener {
 
     @Override
     public void onDownloadComplete() {
-        Log.d(TAG, "onDownloadComplete: ");
-        // store storage path in db to use in media player
-        AyahItem ayahItem = repository.getAyahByIndex(audioToDownload); // first get ayah to edit it with storage path
-        String storagePath = path + "/" + filename;
-        ayahItem.setAudioPath(storagePath); // set path
-        repository.updateAyahItem(ayahItem);
-        audioToDownload++ ;
-        downlaodAudioData();
+        Log.d(TAG, "onDownloadComplete: "+ audioToDownload);
+        try {
+            // store storage path in db to use in media player
+            AyahItem ayahItem = repository.getAyahByIndex(audioIndexesToDownload.get(audioToDownload)); // first get ayah to edit it with storage path
+            String storagePath = path + "/" + filename;
+            ayahItem.setAudioPath(storagePath); // set path
+            repository.updateAyahItem(ayahItem);
+            audioToDownload++ ;
+            downlaodAudioData();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showMessage("" + e.getMessage());
+        }
 
     }
 

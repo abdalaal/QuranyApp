@@ -14,4 +14,13 @@
     <dimen name="text_score_title">@dimen/_25ssp</dimen>
     <dimen name="score_value">@dimen/_35ssp</dimen>
     <dimen name="font_feedback">@dimen/_17ssp</dimen>
+
+    <!--dimes for design 3-->
+    <dimen name="headerTextSize">22sp</dimen>
+    <dimen name="newsMoreTextSize">12sp</dimen>
+    <dimen name="loginCardRadius">20dp</dimen>
+    <dimen name="loginViewsMargin">20dp</dimen>
+
+    <dimen name="signup_text_margin_top">10dp</dimen>
+
 </resources>
