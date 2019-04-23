@@ -12,6 +12,9 @@ public class AyahItem {
     private int surahIndex;
     private int pageNum;
     private int juz ;
+    private int hizbQuarter;
+    private boolean sajda;
+    private int manzil;
     private int ayahInSurahIndex;
     private String text;
     private String textClean;
@@ -19,11 +22,14 @@ public class AyahItem {
     private String audioPath;
 
 
-    public AyahItem(int ayahIndex, int surahIndex, int pageNum, int juz, int ayahInSurahIndex, String text, String textClean, String tafseer, String audioPath) {
+    public AyahItem(int ayahIndex, int surahIndex, int pageNum, int juz, int hizbQuarter, boolean sajda, int manzil, int ayahInSurahIndex, String text, String textClean, String tafseer, String audioPath) {
         this.ayahIndex = ayahIndex;
         this.surahIndex = surahIndex;
         this.pageNum = pageNum;
         this.juz = juz;
+        this.hizbQuarter = hizbQuarter;
+        this.sajda = sajda;
+        this.manzil = manzil;
         this.ayahInSurahIndex = ayahInSurahIndex;
         this.text = text;
         this.textClean = textClean;
@@ -42,6 +48,30 @@ public class AyahItem {
         this.ayahInSurahIndex = ayahInSurahIndex;
         this.text = text;
         this.textClean = textClean;
+    }
+
+    public int getHizbQuarter() {
+        return hizbQuarter;
+    }
+
+    public void setHizbQuarter(int hizbQuarter) {
+        this.hizbQuarter = hizbQuarter;
+    }
+
+    public boolean isSajda() {
+        return sajda;
+    }
+
+    public void setSajda(boolean sajda) {
+        this.sajda = sajda;
+    }
+
+    public int getManzil() {
+        return manzil;
+    }
+
+    public void setManzil(int manzil) {
+        this.manzil = manzil;
     }
 
     public int getAyahIndex() {

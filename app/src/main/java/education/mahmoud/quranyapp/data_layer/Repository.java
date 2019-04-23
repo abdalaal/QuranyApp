@@ -178,7 +178,7 @@ public class Repository {
     }
 
     public String getCurrentUserUUID() {
-        return remote.getCurrentUserUUID();
+        return localShared.getUserUUID();
     }
 
     public void addUser(User user) {
@@ -207,6 +207,10 @@ public class Repository {
 
     public void setUserUUID(String uuid) {
         localShared.setUserUUID(uuid);
+    }
+
+    public DatabaseReference getReviews() {
+    return remote.getReviews();
     }
 
 

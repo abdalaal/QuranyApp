@@ -12,9 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/back_border_page"
-        android:paddingEnd="@dimen/_16sdp"
-        android:paddingTop="@dimen/_10sdp">
+       android:layout_margin="@dimen/_16sdp"
+        android:background="@drawable/back_border_page">
 
         <TextView
             android:id="@+id/tvSuraNameShowAyas"
@@ -32,6 +31,8 @@
             android:id="@+id/imBookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_gravity="center_vertical"
             app:srcCompat="@drawable/ic_book"
            />
     </LinearLayout>
@@ -41,13 +42,13 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:background="@drawable/ic_border"
         >
        <ScrollView
            android:id="@+id/sc_ayahs_text"
-           android:layout_margin="@dimen/_23sdp"
+           android:layout_margin="@dimen/_10sdp"
            android:layout_width="match_parent"
-           android:layout_height="match_parent">
+           android:layout_height="match_parent"
+           android:background="@drawable/back_border_page">
            <TextView
                android:id="@+id/tvAyahs"
                android:padding="@dimen/_6sdp"

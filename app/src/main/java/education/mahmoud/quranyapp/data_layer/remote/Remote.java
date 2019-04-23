@@ -54,6 +54,10 @@ public class Remote {
         firebaseDataSource.addFeedback(feedback);
     }
 
+    public DatabaseReference getReviews() {
+        return firebaseDataSource.getReviews();
+    }
+
 
 
 

@@ -86,7 +86,9 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
             @Override
             public void onClick(View view) {
                 if (item.getTafseer() != null) {
-                    Util.getDialog(holder.itemView.getContext() ,item.getTafseer(),"" ).show();
+                    String title = holder.itemView.getContext().
+                            getString(R.string.tafserr_info , item.getAyahInSurahIndex() , item.getPageNum() ,item.getJuz() );
+                    Util.getDialog(holder.itemView.getContext() ,item.getTafseer(),title ).show();
                 } else {
                     Toast.makeText(holder.itemView.getContext(), holder.itemView.getContext().getText(R.string.tafseer_not_down) , Toast.LENGTH_SHORT).show();
                 }

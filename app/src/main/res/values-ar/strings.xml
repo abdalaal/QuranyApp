@@ -61,7 +61,7 @@
     <string name="show_scoreboard">قائمة المستخدمين</string>
     <string name="score">النقاط</string>
     <string name="profile">ملفك الشخصى</string>
-    <string name="score_str">%d \n %s</string>
+    <string name="score_str">نقاطك \n%d \n %s</string>
     <string name="download_tafseer_data">تحميل ملفات التفسير </string>
     <string name="download">تحميل البيانات </string>
     <string name="tafseer">التفسير</string>
@@ -84,18 +84,25 @@
     <string name="welcome">مرحبا  %s</string>
     <string name="not_registered">not registered user</string>
     <string name="upload">أرسل نقاطك للسيرفر </string>
-    <string name="go_to_login">سجل دخول</string>
+    <string name="go_to_login">سجل دخول لتسطيع رفع نقاطك </string>
 
     <string name="register">تسجيل</string>
     <string name="login_email_hint">الايميل</string>
     <string name="login_password_hint">كلمة المرور</string>
     <string name="signup_login_hint">هل لديك حساب ؟ سجل دخولك</string>
     <string name="login_signup_hint">ليس لديك حساب؟ انشأ حساب</string>
-    <string name="name">Name</string>
-    <string name="wrong_name">Wrong name</string>
-    <string name="wrong_email">wrong email</string>
-    <string name="wrong_pass">wrong password</string>
+    <string name="name">الاسم </string>
+    <string name="wrong_name">خطأ فى الاسم </string>
+    <string name="wrong_email">خطأ فى الايميل </string>
+    <string name="wrong_pass">خطأ فى كلمة المرور </string>
     <string name="not_req">Not Registered User, Creat account to upload your score</string>
+    <string name="na">لم يسجل اى نقاط</string>
+    <string name="empty">لا يجب ان تكون فارغة </string>
+    <string name="feedback">أرسل تقييمك </string>
+    <string name="tafserr_info">AyahNum:%d\n PageNum:%d\nJuzNum:%d</string>
+    <string name="created_Account">Acount Created Successfuly, You Can Upokad now</string>
+    <string name="logged_success">Logged Successfuly, now you can  upload points</string>
+    <string name="uploaded">Uploaded</string>
 
 
 </resources>

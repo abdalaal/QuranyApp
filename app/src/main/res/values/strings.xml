@@ -53,11 +53,11 @@
     <string name="suggestions">Suggestions</string>
     <string name="send">send</string>
     <string name="show_scoreboard">Show Scoreboard</string>
-    <string name="score">score</string>
+    <string name="score">Score</string>
     <string name="profile">profile</string>
-    <string name="score_str">%d \n %s</string>
+    <string name="score_str">Score \n%d \n %s</string>
     <string name="download_tafseer_data">Download Tafseer Data</string>
-    <string name="download">download data</string>
+    <string name="download">Download Zone</string>
     <string name="tafseer">Show Tafseer</string>
     <string name="no_bookmarks">No Bookmarks</string>
     <string name="select_ayah">Please select num of ayah</string>
@@ -78,7 +78,7 @@
     <string name="welcome">Welcome %s</string>
     <string name="not_registered">not registered user</string>
     <string name="upload">Upload Score</string>
-    <string name="go_to_login">Go To Login</string>
+    <string name="go_to_login">Register To Upload Points </string>
 
     <string name="register">REGISTER</string>
     <string name="login_email_hint">Email</string>
@@ -89,6 +89,14 @@
     <string name="wrong_name">Wrong name</string>
     <string name="wrong_email">wrong email</string>
     <string name="wrong_pass">wrong password</string>
+
     <string name="not_req">Not Registered User, Creat account to upload your score</string>
+    <string name="na">NA</string>
+    <string name="empty">it should not be empty</string>
+    <string name="feedback">Feedback</string>
+    <string name="tafserr_info">AyahNum:%d\n PageNum:%d\nJuzNum:%d</string>
+    <string name="created_Account">Acount Created Successfuly, You Can Upokad now</string>
+    <string name="logged_success">Logged Successfuly, now you can  upload points</string>
+    <string name="uploaded">Uploaded</string>
 
 </resources>

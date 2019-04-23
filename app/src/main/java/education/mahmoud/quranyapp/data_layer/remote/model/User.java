@@ -1,5 +1,8 @@
 package education.mahmoud.quranyapp.data_layer.remote.model;
 
+import android.support.annotation.Keep;
+
+@Keep
 public class User {
 
     private String key;

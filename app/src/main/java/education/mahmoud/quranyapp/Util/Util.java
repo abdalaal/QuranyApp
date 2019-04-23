@@ -1,17 +1,20 @@
 package education.mahmoud.quranyapp.Util;
 
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
@@ -33,6 +36,10 @@ import education.mahmoud.quranyapp.model.Quran;
 public class Util {
 
     private static final String TAG = "Util";
+
+    public static  boolean checkInput(String input) {
+        return !TextUtils.isEmpty(input) && input.replaceAll(" ", "").length() != 0;
+    }
 
     public static Quran getQuran(Context context) {
         try (InputStream fileIn = context.getAssets().open("data.json");
@@ -189,10 +196,22 @@ public class Util {
 
 
 
-    public static AlertDialog getDialog(Context context, String message, String title) {
+    public static Dialog getDialog(Context context, String message, String title) {
+
         View view = LayoutInflater.from(context).inflate(R.layout.custome_dialoge_title , null) ;
+        TextView titleTextView = view.findViewById(R.id.tvInfo);
+        titleTextView.setText(title);
+
         TextView textView = view.findViewById(R.id.tvDialogeText);
         textView.setText(message);
-        return new AlertDialog.Builder(context).setView(view).create();
+
+
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(view);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        return dialog;
+
     }
 }

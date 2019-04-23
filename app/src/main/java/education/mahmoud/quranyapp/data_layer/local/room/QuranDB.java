@@ -8,10 +8,10 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.migration.Migration;
 import android.support.annotation.NonNull;
 
-@Database(entities = {AyahItem.class, SuraItem.class , BookmarkItem.class}, version = 3, exportSchema = false)
+@Database(entities = {AyahItem.class, SuraItem.class , BookmarkItem.class}, version = 4, exportSchema = false)
 public abstract class QuranDB extends RoomDatabase {
 
-    // Singleton Pattern only one istance exists and availbale for all classes from this class
+    // Singleton Pattern only one instance exists and available for all classes from this class
     private static QuranDB instance;
 
     static final Migration MIGRATION_2_3 =  new Migration(2,3) {
@@ -52,12 +52,11 @@ public abstract class QuranDB extends RoomDatabase {
     };
 
 
-
     public static synchronized QuranDB getInstance(Application application) {
         if (instance == null) { // first time to create instance
             instance = Room.databaseBuilder(application, QuranDB.class, "quran")
                     .allowMainThreadQueries()
-                    .addMigrations(MIGRATION_2_3 , MIGRATION_1_3)
+                    .fallbackToDestructiveMigrationFrom(3)
                     .build();
         }
         return instance;

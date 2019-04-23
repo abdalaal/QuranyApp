@@ -76,4 +76,8 @@ public class LocalShared {
     public void setUserUUID(String uuid) {
     preferences.edit().putString(Constants.USER_UUID , uuid).apply();
         }
+
+    public String getUserUUID() {
+        return preferences.getString(Constants.USER_UUID , null);
+    }
 }

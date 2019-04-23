@@ -55,6 +55,7 @@
 
     <style name="modifiedEditText" parent="parent">
         <item name="android:textSize">@dimen/newsMoreTextSize</item>
+        <item name="android:textColor">@color/bg_white</item>
     </style>
 
     <style name="viewParent">

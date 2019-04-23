@@ -86,8 +86,8 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
             }
         });
 
-//        Typeface typeface = Typeface.createFromAsset(getAssets(), "kfgqpc_naskh.ttf");
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "Scheherazade-Regular.ttf");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "kfgqpc_naskh.ttf");
+//        Typeface typeface = Typeface.createFromAsset(getAssets(), "Scheherazade-Regular.ttf");
         tvAyahs.setTypeface(typeface);
 
         sbRate.setOnSeekBarChangeListener(this);
@@ -155,9 +155,14 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
                             int ayahIndex = Integer.parseInt(String.valueOf(selectedText));
                             // use ++index as index in Data is start from 0 and in database start from 1
                             AyahItem ayahItem = repository.getAyahByInSurahIndex(  ++index, ayahIndex  );
-                            String message = getString(R.string.message_dialoge,ayahItem.getPageNum(),ayahItem.getTafseer());
+                            String message = ayahItem.getTafseer();
+                            String title = getString(R.string.tafserr_info , ayahItem.getAyahInSurahIndex() , ayahItem.getPageNum() ,ayahItem.getJuz() );
+                                    /*
+                            String message = getString
+                                    (R.string.message_dialoge,ayahItem.getPageNum(),ayahItem.getTafseer());*/
+
                             if (ayahItem.getTafseer() != null){
-                                Util.getDialog(ShowSuarhAyas.this ,  message, "Tafseer").show();
+                                Util.getDialog(ShowSuarhAyas.this ,  message, title).show();
                             }else{
                                 showMessage(getString(R.string.tafseer_not_down));
                             }
@@ -176,13 +181,12 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
 
         });
     }
-
-
+    
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume: scroll " + scroll);
-
+        
+        // // TODO: 4/22/2019 get value of rate from sharedPreference  
         /*
          *
          * ResourcesCompat.getColor(getResources(), R.color.your_color, null); //without themes
@@ -197,7 +201,7 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
 //            tvSuraNameShowAyas.setTextColor(getResources().getColor(R.color.ayas_color));
             tvAyahs.setTextColor(getResources().getColor(R.color.ayas_color));
 
-            // check user color for background
+            // check usesr color for background
             int col = repository.getBackColorState();
             switch (col) {
                 case Constants.GREEN:
@@ -224,6 +228,7 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
         for (AyahItem ayahItem : ayahs) {
             aya = ayahItem.getText();
             builder.append(aya + " (" + ayahItem.getAyahInSurahIndex() + ") ");
+            // // TODO: 4/22/2019  check Hizb and add A symbol
         }
         String res = builder.toString();
         tvAyahs.setText(Util.getSpannable(res), TextView.BufferType.SPANNABLE);
@@ -241,7 +246,6 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
     private void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
 
     private void dynamicScroll() {
         Timer timer = new Timer();
@@ -261,6 +265,7 @@ public class ShowSuarhAyas extends AppCompatActivity implements SeekBar.OnSeekBa
         timer.schedule(timerTask , 0 , 500);
 
     }
+
     @OnClick(R.id.imBookmark)
     public void onViewClicked() {
         BookmarkItem bookmarkItem = new BookmarkItem();

@@ -126,10 +126,10 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
         if (!isPermissionAllowed){
             ((Home)getActivity()).acquirePermission();
         }
-        initSpinners();
 
         return view;
     }
+
 
 
     private void initSpinners() {
@@ -194,12 +194,9 @@ public class ListenFragment extends Fragment implements OnDownloadListener {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && lnPlayView != null){
+            initSpinners();
             backToSelectionState();
-        }/*else{
-            *//*if (lnPlayView != null && mediaPlayer != null){
-                mediaPlayer.release();
-            }*//*
-        }*/
+        }
     }
 
     @Override

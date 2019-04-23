@@ -9,16 +9,19 @@ public class BookmarkItem {
 
     @PrimaryKey(autoGenerate = true)
     private int id ;
+
     private long timemills ;
     private int scrollIndex ;
     private int pageNum ;
+    private int ayahNum ;
     private String suraName ;
 
-    public BookmarkItem(int id, long timemills, int scrollIndex, int pageNum, String suraName) {
+    public BookmarkItem(int id, long timemills, int scrollIndex, int pageNum, int ayahNum, String suraName) {
         this.id = id;
         this.timemills = timemills;
         this.scrollIndex = scrollIndex;
         this.pageNum = pageNum;
+        this.ayahNum = ayahNum;
         this.suraName = suraName;
     }
 
@@ -32,6 +35,14 @@ public class BookmarkItem {
         this.scrollIndex = scrollIndex;
         this.pageNum = pageNum;
         this.suraName = suraName;
+    }
+
+    public int getAyahNum() {
+        return ayahNum;
+    }
+
+    public void setAyahNum(int ayahNum) {
+        this.ayahNum = ayahNum;
     }
 
     public int getId() {

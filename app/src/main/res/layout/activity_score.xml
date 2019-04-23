@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
     android:padding="@dimen/_16sdp"
     tools:context=".feature.scores.ScoreActivity">
 
@@ -14,50 +13,29 @@
         android:id="@+id/tvWelcomeUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:padding="@dimen/_10sdp"
+
         android:gravity="center_horizontal"
-        android:textSize="@dimen/textRange"
-        android:text="@string/welcome"/>
+        android:padding="@dimen/_10sdp"
+        android:text="@string/welcome"
+        android:textSize="@dimen/textRange" />
 
     <LinearLayout
         android:id="@+id/loggedLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_22sdp"
-        android:orientation="vertical"
-       >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/your_score"
-            android:gravity="center_horizontal"
-            android:textSize="@dimen/text_score_title"
-            android:layout_marginBottom="@dimen/_16sdp"/>
+        android:orientation="vertical">
+
 
 
         <TextView
             android:id="@+id/tvTotalScore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/score_str"
             android:background="@drawable/back_edit_search"
             android:gravity="center_horizontal"
+            android:text="@string/score_str"
             android:textSize="@dimen/score_value" />
-
-
-        <Button
-            android:id="@+id/btnShowScoreBoard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/show_scoreboard"
-            android:layout_gravity="center"
-            android:paddingStart="@dimen/_8sdp"
-            android:paddingEnd="@dimen/_8sdp"
-            android:visibility="gone"
-            android:background="@drawable/back_search_res"
-            android:layout_marginTop="@dimen/_16sdp"/>
 
 
     </LinearLayout>
@@ -66,18 +44,105 @@
         android:id="@+id/btnUploadScore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/upload"/>
+        android:layout_marginTop="16sp"
+        android:background="@drawable/login_button_bk"
+        android:text="@string/upload"
+        android:textColor="@color/bg_white" />
 
 
     <Button
         android:id="@+id/btnOpenLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/go_to_login"/>
+        android:layout_marginTop="16sp"
+        android:background="@drawable/login_button_bk"
+        android:text="@string/go_to_login"
+        android:textColor="@color/bg_white" />
+
+    <Button
+        android:id="@+id/btnShowScoreBoard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/login_button_bk"
+        android:gravity="center"
+        android:text="Scoreboard"
+        android:textColor="@color/bg_white"
+        android:layout_marginBottom="@dimen/_10sdp"
+        />
+
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/spScoreboard"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_16sdp"
+        app:SpinKit_Color="@color/spin_color"
+        android:visibility="gone"/>
+
+
+    <LinearLayout
+        android:id="@+id/lnScoreboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:padding="@dimen/_8sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvScoreuserName"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back_edit_search"
+                android:gravity="center_horizontal"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:textSize="@dimen/_17ssp"
+                android:text="User Name" />
+
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back_edit_search"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/_17ssp"
+                android:text="Score" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvScoreboard"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_weight="1" />
 
 
 
+    </LinearLayout>
 
+
+    <TextView
+        android:id="@+id/tvNoScores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_22sdp"
+        android:text="No Scores recoreded yet"
+        android:textColor="@color/bg_white"
+        android:textSize="@dimen/_25ssp"
+        android:visibility="gone"/>
 
 
 </LinearLayout>

@@ -13,11 +13,13 @@
     <LinearLayout
         style="@style/linearParent"
         android:layout_gravity="center"
+        android:background="@color/colorPrimary"
         android:padding="@dimen/loginViewsMargin">
 
         <TextView
             style="@style/headerTextPrimary"
             android:text="@string/register"
+            android:textColor="@color/bg_white"
             android:layout_marginTop="@dimen/loginViewsMargin"/>
 
         <android.support.design.widget.TextInputLayout
@@ -28,6 +30,8 @@
                 style="@style/modifiedEditText"
                 android:inputType="text"
                 android:maxLines="1"
+                android:paddingEnd="@dimen/_10sdp"
+                android:drawableEnd="@drawable/ic_person"
                 android:hint="@string/name"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -40,6 +44,8 @@
                 style="@style/modifiedEditText"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:paddingEnd="@dimen/_10sdp"
+                android:drawableEnd="@drawable/ic_email"
                 android:hint="@string/login_email_hint"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -51,9 +57,20 @@
                 style="@style/modifiedEditText"
                 android:hint="@string/login_password_hint"
                 android:maxLines="1"
+                android:paddingEnd="@dimen/_10sdp"
+                android:drawableEnd="@drawable/ic_visibility"
                 android:inputType="textPassword"/>
         </android.support.design.widget.TextInputLayout>
 
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spRegister"
+            style="@style/SpinKitView.Large.ChasingDots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:SpinKit_Color="@color/spin_color"
+            android:visibility="gone"/>
         <Button
             android:id="@+id/btnResgister"
             style="@style/loginButton"
@@ -66,7 +83,7 @@
             style="@style/parent"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/whiteTextColor"
             android:text="@string/signup_login_hint"
             android:layout_marginTop="@dimen/loginViewsMargin"/>
 

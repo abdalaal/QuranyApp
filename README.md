@@ -19,6 +19,9 @@ Simple HolyQuran app
 - Search for words or complete ayah.
 - Download and Listen to ayahs
 - Repeat each ayas and repeat whole listening
+- Tafseer
+- Points for Tasmee3 
+- Upload Points and got Scoreboard 
 
 # Challenges 
 - **Data** 
@@ -92,7 +95,8 @@ XML | 1389
 # Screens
 
 ![img1](images/1.png)
-![img1](images/2.png)
+![img1](images/22.png)
+![img1](images/23.png)
 ![img1](images/3.png)
 ![img1](images/4.png)
 ![img1](images/5.png)

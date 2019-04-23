@@ -16,34 +16,30 @@
         android:theme="@style/AppTheme">
 
         <activity
+            android:name=".feature.login.Login"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+
+        <activity
             android:name=".feature.splash.Splash"
             android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
         </activity>
 
-        <activity android:name=".feature.register.RegisterActivity"
+        <activity
+            android:name=".feature.register.RegisterActivity"
+            android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true"/>
-
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".feature.download.Download"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".feature.scores.ScoreActivity"
-            android:exported="true" />
-
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
             android:name=".feature.profile.ProfileActivity"
             android:exported="true" />
-
 
         <activity
             android:name=".feature.feedback_activity.FeedbackActivity"
@@ -54,9 +50,15 @@
             android:name=".feature.home_Activity.Home"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan"></activity>
-        <activity android:name=".feature.setting.SettingActivity" />
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
+        <activity android:name=".feature.setting.SettingActivity" />
         <activity
             android:name=".feature.ayahs_search.ShowSearchResults"
             android:exported="true"
@@ -65,10 +67,9 @@
             android:name=".feature.show_sura_ayas.ShowSuarhAyas"
             android:theme="@style/AppTheme.NoActionBar" />
 
-
-        <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false" />
-
-
+        <meta-data
+            android:name="google_analytics_adid_collection_enabled"
+            android:value="false" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

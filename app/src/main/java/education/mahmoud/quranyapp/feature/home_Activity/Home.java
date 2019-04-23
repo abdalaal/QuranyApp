@@ -206,8 +206,8 @@ public class Home extends AppCompatActivity {
                 gotoLastRead();
                 break;
 
-            case R.id.actionprofile:
-                gotoProfile();
+            case R.id.actionFeedback:
+                gotoFeedback();
                 break;
 
             case R.id.actionScore:
@@ -260,7 +260,7 @@ public class Home extends AppCompatActivity {
     }
 
 
-    private void gotoProfile() {
+    private void gotoFeedback() {
         Intent openAcivity = new Intent(this, FeedbackActivity.class);
         startActivity(openAcivity);
     }

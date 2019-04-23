@@ -11,8 +11,8 @@
     <dimen name="textRange">@dimen/_22ssp</dimen>
     <dimen name="search_text_size">@dimen/_20ssp</dimen>
     <dimen name="width_seek">10dp</dimen>
-    <dimen name="text_score_title">@dimen/_25ssp</dimen>
-    <dimen name="score_value">@dimen/_35ssp</dimen>
+    <dimen name="text_score_title">@dimen/_20sdp</dimen>
+    <dimen name="score_value">@dimen/_25ssp</dimen>
     <dimen name="font_feedback">@dimen/_17ssp</dimen>
 
     <!--dimes for design 3-->
