@@ -8,6 +8,7 @@ Simple HolyQuran app
 
 - [Google Play Link ](https://play.google.com/store/apps/details?id=education.mahmoud.quranyapp)
 - [Youtube App Overview](http://bit.ly/2Ggw9Q7)
+- [F-Droid link](https://apt.izzysoft.de/fdroid/index/apk/education.mahmoud.quranyapp) 
 
 
 
@@ -87,8 +88,8 @@ crashreporter | 1.0.9
 
 Languages | Line of code (LOC)
 ---------- | -------
-Java | 4991
-XML | 1389
+Java | 7611
+XML | 2811
 
 
 
@@ -111,4 +112,5 @@ XML | 1389
 
 # Contributors 
 
-Thanks to [zularizal](https://github.com/zularizal) for awesome logo
+- Thanks to [zularizal](https://github.com/zularizal) for awesome logo
+- Thanks to [izzysoft](https://github.com/IzzySoft) for providing another installion source.
