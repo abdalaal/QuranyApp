@@ -1,6 +1,6 @@
 # QuranyApp
 
-![logo]("logo/horizontal.png")
+![logo](logo/horizontal.png)
 
 Simple HolyQuran app
 
@@ -112,3 +112,6 @@ XML | 2811
 
 - Thanks to [zularizal](https://github.com/zularizal) for awesome logo
 - Thanks to [izzysoft](https://github.com/IzzySoft) for providing another installion source.
+
+# Privacy Policy
+- [link](privacy.md)
